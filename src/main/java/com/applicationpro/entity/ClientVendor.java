@@ -1,12 +1,12 @@
 package com.applicationpro.entity;
 
+import com.applicationpro.enums.State;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalTime;
                                 // To-do: Annotations for each field.
 
@@ -24,23 +24,28 @@ public class ClientVendor extends BaseEntity {
 
     private String email;
 
-    private Company company;         //make sure this is long and  not company or list of companies.
+    @ManyToMany
+    private Company company;                 //make sure this is long and  not company or list of companies.
 
+    @Enumerated(EnumType.STRING)
     private CompanyType type;
 
     private String zipCode;
 
     private String address;
 
-    private State state;
+    @Enumerated(EnumType.STRING)
+    private State state;                   //To-do notes left in the State.java file
 
     boolean enabled;
 
-    private User createdBy;           //double check.
+    @ManyToMany
+    private List<User> createdBy;           //double check.
 
     private LocalTime createdTime;
 
-    private User updatedBy;           //double check
+    @ManyToMany
+    private List<User> updatedBy;           //double check (1. is many-to-many correct?) (list or set)(fetch type)
 
     private LocalTime UpdatedTime;
 
