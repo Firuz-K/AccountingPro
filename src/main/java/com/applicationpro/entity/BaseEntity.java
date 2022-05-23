@@ -26,5 +26,5 @@ public class BaseEntity {
     private Long lastUpdateUserId;
     private Boolean isDeleted=false;
 
-
+// Do we need PrePersist and PreUpdate
 }
