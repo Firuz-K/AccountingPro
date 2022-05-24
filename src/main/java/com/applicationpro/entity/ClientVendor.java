@@ -7,8 +7,9 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
-                                // To-do: Annotations for each field.
+// To-do: Annotations for each field.
 
 @Entity
 @Table(name = "client_vendor")
@@ -19,13 +20,11 @@ import java.time.LocalTime;
 public class ClientVendor extends BaseEntity {
 
     private String companyName;
-
     private String phone;
-
     private String email;
 
-    @ManyToMany
-    private Company company;                 //make sure this is long and  not company or list of companies.
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Company company;
 
     @Enumerated(EnumType.STRING)
     private CompanyType type;
@@ -35,19 +34,21 @@ public class ClientVendor extends BaseEntity {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    private State state;                   //To-do notes left in the State.java file
+    private State state;
 
     boolean enabled;
 
-    @ManyToMany
-    private List<User> createdBy;           //double check.
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User createdBy;
 
-    private LocalTime createdTime;
+    @Column(columnDefinition = "DATE")
+    private LocalDate createdTime;
 
-    @ManyToMany
-    private List<User> updatedBy;           //double check (1. is many-to-many correct?) (list or set)(fetch type)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User updatedBy;
 
-    private LocalTime UpdatedTime;
+    @Column(columnDefinition = "DATE")
+    private LocalDate UpdatedTime;
 
     private boolean isDeleted;
 
