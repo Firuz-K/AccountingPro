@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 public class Role extends BaseEntity{
+
     private String description;
 
 //    @OneToOne(mappedBy = "role")
