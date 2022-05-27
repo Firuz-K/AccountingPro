@@ -1,19 +1,25 @@
 package com.applicationpro.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
+@Table(name = "categories")
 @NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@Where(clause = "is_deleted=false")
 public class Category extends BaseEntity {
 
     private String description;
-    private Long companyId;
     private Boolean enabled;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "company_id")
+//    private Company company;
 }

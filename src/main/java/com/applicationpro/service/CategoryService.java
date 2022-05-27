@@ -1,7 +1,7 @@
 package com.applicationpro.service;
 
 import com.applicationpro.dto.CategoryDTO;
-import com.applicationpro.entity.Category;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
