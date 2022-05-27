@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryDTO> listAllCategories() {
         return categoryRepository.findAll().stream()
-                .map(role -> mapperUtil.convert(role, new CategoryDTO()))
+                .map(category -> mapperUtil.convert(category, new CategoryDTO()))
                 .collect(Collectors.toList());
     }
 
