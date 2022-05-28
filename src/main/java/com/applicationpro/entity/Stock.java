@@ -14,14 +14,13 @@ import java.math.BigDecimal;
 @Where(clause = "is_deleted=false")
 public class Stock extends BaseEntity{
 
-    private String name;
-    private String description;
+
     private int quantity;
     private int remainingQuantity;
     private BigDecimal price;
 
     @OneToOne
-    @JoinColumn(name = "product_d")
+    @JoinColumn(name = "product_id")
     private Product product;
 
 
