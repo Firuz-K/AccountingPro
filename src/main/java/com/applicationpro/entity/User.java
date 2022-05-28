@@ -10,12 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
+//@AllArgConstructor, why we cannot put it? Ask Baha
 @NoArgsConstructor
 @Data
 @Table(name = "user")
 @Where(clause = "is_deleted=false")
 public class User extends BaseEntity {
 
+//@Column(unique = true, nullable = false)
     private String email;
     private String firstName;
     private String lastName;
@@ -26,21 +28,16 @@ public class User extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private  Company company;
-    //private Long company_id;
 
-    private  Long created_by;
-
-    private  Long updated_by;
-
-    //private  Long role_id;
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @Column(columnDefinition = "DATE")
-    private LocalDate created_time;
-    @Column(columnDefinition = "DATE")
-    private LocalDate updated_time;
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate created_time;
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate updated_time;
+    // they exist in base entity, omer
 
 
 

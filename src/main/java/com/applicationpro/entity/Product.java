@@ -31,21 +31,23 @@ public class Product extends BaseEntity{
 //    @JoinColumn(name = "company_id")
 //    private Company company; // will relation after Category created
 
-    private Boolean enabled;
-    private Integer createdBy;
-    private Integer updatedBy;
+//    private Boolean enabled;
+//    private Integer createdBy;
+//    private Integer updatedBy;
+//
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate createdTime;
+//
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate updatedTime;
 
-    @Column(columnDefinition = "DATE")
-    private LocalDate createdTime;
-
-    @Column(columnDefinition = "DATE")
-    private LocalDate updatedTime;
+    // they exist in base entity
 
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
 
-    private Boolean isDeleted;
-    private Integer newColumn;
+  //  private Boolean isDeleted;
+    private Integer newColumn; // what is this?
 
 
 
