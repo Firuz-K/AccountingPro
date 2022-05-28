@@ -17,13 +17,13 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, updatable = false)
-    private LocalDateTime insertDateTime;
+    private LocalDateTime createdTime;
     @Column(nullable = false,updatable = false)
-    private Long insertUserId;
+    private Long createdBy;
     @Column(nullable = false)
-    private LocalDateTime lastUpdateDateTime;
+    private LocalDateTime updatedTime;
     @Column(nullable = false)
-    private Long lastUpdateUserId;
+    private Long updatedBy;
     private Boolean isDeleted=false;
 
 // Do we need PrePersist and PreUpdate

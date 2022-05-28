@@ -1,5 +1,6 @@
 package com.applicationpro.entity;
 
+import com.applicationpro.enums.CompanyType;
 import com.applicationpro.enums.State;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,20 +38,21 @@ public class ClientVendor extends BaseEntity {
     private State state;
 
     boolean enabled;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User createdBy;
-
-    @Column(columnDefinition = "DATE")
-    private LocalDate createdTime;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User updatedBy;
-
-    @Column(columnDefinition = "DATE")
-    private LocalDate UpdatedTime;
-
-    private boolean isDeleted;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private User createdBy;
+//
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate createdTime;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private User updatedBy;
+//
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate UpdatedTime;
+//
+//    private boolean isDeleted;
+    // they exist in base entity
 
 
 }

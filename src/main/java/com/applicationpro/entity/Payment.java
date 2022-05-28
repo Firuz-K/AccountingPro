@@ -12,20 +12,22 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor // We should delete all arg constructor, omer
+//@Where(clause = "is_deleted=false") // omer
 public class Payment extends BaseEntity{
 
     private String month;
     @Column(columnDefinition = "DATE")
     private LocalDate year;
 
-    private Integer amount;
-    private Integer isPaid;
-    private String institutionId;
+    private Integer amount; // Double is expected
+    private Integer isPaid; // boolean expected
+    private String institutionId; //
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "company_id")
 //    private Company company;
+    // open this thing
 
 
 }
