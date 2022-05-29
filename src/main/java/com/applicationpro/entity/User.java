@@ -4,15 +4,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 //@AllArgConstructor, why we cannot put it? Ask Baha
 @NoArgsConstructor
 @Data
+@Entity
 @Table(name = "users")
 @Where(clause = "is_deleted=false")
 public class User extends BaseEntity {
