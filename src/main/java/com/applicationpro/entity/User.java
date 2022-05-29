@@ -1,7 +1,9 @@
 package com.applicationpro.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -9,7 +11,8 @@ import java.time.LocalDate;
 
 //@AllArgConstructor, why we cannot put it? Ask Baha
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 @Where(clause = "is_deleted=false")
@@ -36,7 +39,6 @@ public class User extends BaseEntity {
 //    @Column(columnDefinition = "DATE")
 //    private LocalDate updated_time;
     // they exist in base entity, omer
-
 
 
 }
