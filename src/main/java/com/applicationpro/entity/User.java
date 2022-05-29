@@ -13,7 +13,7 @@ import java.time.LocalDate;
 //@AllArgConstructor, why we cannot put it? Ask Baha
 @NoArgsConstructor
 @Data
-@Table(name = "user")
+@Table(name = "users")
 @Where(clause = "is_deleted=false")
 public class User extends BaseEntity {
 
