@@ -1,19 +1,20 @@
 package com.applicationpro.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 //@AllArgConstructor, why we cannot put it? Ask Baha
 @NoArgsConstructor
-@Data
-@Table(name = "user")
+@Getter
+@Setter
+@Entity
+@Table(name = "users")
 @Where(clause = "is_deleted=false")
 public class User extends BaseEntity {
 
@@ -40,5 +41,12 @@ public class User extends BaseEntity {
     // they exist in base entity, omer
 
 
-
 }
+
+/**
+ * 1) Company/name/feature
+ * 2) Commit your branch
+ * 3) Go to master branch and update (do not checkout)
+ * 4) Merge into your local ( To deal with potential conflicts)
+ * 5) You can push now
+ */
