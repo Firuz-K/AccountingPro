@@ -42,3 +42,11 @@ public class User extends BaseEntity {
 
 
 }
+
+/**
+ * 1) Company/name/feature
+ * 2) Commit your branch
+ * 3) Go to master branch and update (do not checkout)
+ * 4) Merge into your local ( To deal with potential conflicts)
+ * 5) You can push now
+ */
