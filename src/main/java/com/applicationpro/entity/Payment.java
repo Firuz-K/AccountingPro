@@ -1,33 +1,36 @@
 package com.applicationpro.entity;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor // We should delete all arg constructor, omer
-//@Where(clause = "is_deleted=false") // omer
+@Where(clause = "is_deleted=false")
+@Table(name = "payments")
 public class Payment extends BaseEntity{
 
     private String month;
+
     @Column(columnDefinition = "DATE")
     private LocalDate year;
 
-    private Integer amount; // Double is expected
-    private Integer isPaid; // boolean expected
-    private String institutionId; //
+    private Double amount;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "company_id")
-//    private Company company;
-    // open this thing
+    private Boolean isPaid;
+
+    private String institutionId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Company company;
+
 
 
 }
