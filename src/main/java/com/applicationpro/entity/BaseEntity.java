@@ -26,5 +26,17 @@ public class BaseEntity {
     private Long updatedBy;
     private Boolean isDeleted=false;
 
-// Do we need PrePersist and PreUpdate
+    @PrePersist
+    public void onPrePersist(){
+        this.createdTime = LocalDateTime.now();
+        this.updatedTime = LocalDateTime.now();
+        this.createdBy = 1L;
+        this.updatedBy = 1L;
+    }
+
+    @PreUpdate
+    public void onPreUpdate(){
+        this.updatedTime = LocalDateTime.now();
+        this.updatedBy = 1L;
+    }
 }

@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 //@AllArgConstructor, why we cannot put it? Ask Baha
+
 @NoArgsConstructor
 @Getter
 @Setter

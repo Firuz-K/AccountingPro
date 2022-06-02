@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,11 +14,10 @@ import javax.persistence.Table;
 @Data
 @Entity
 //@Where(clause = "is_deleted=false")
-public class Role extends BaseEntity{
+public class Role {
 
-    private String description;
-
-//    @OneToOne(mappedBy = "role")
-//    private User user;
-
+    @Id
+    private Long id;
+    private String name;
+    private boolean enabled;
 }
