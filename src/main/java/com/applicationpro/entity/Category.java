@@ -19,7 +19,23 @@ public class Category extends BaseEntity {
     private String description;
     private Boolean enabled;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
-    private List<Company> company; // I made the return type a list , omer
+    private Company company; // I made the return type a list , omer
 }
+
+/*
+@NoArgsConstructor
+@Data
+@Entity
+@Where(clause = "is_deleted = false")
+@Table(name = "categories")
+public class Category extends BaseEntity{
+
+
+    private String description;
+    @ManyToOne //should we use the fetch lazy --- why we do not use the many to many ...
+    @JoinColumn(name = "company_id")
+    private Company company; //private  List<Company> company;
+    private Boolean enabled;
+ */

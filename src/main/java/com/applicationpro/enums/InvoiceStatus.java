@@ -2,7 +2,7 @@ package com.applicationpro.enums;
 
 public class InvoiceStatus {
 
-    /*
+
     public enum InvoiceType {
     //IF MORE ENUMS NEEDED WILL BE UPDATED ACCORDINGLY,
     SALESINVOICE("S_Invoice"), PURCHASEINVOICE("P_Invoice");
@@ -18,5 +18,5 @@ public class InvoiceStatus {
     }
 }
 
-     */
+
 }
