@@ -18,3 +18,9 @@ VALUES (1, 1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', '3073 Sumn
         true, '2020-01-05', '484-556-6097', 'John Unilever', 'PA', 'Unilever', '19714'),
        (4, 1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', '1116 Cooks Mine Road', '', 'abc@bp.com',
         true, '2020-01-05', '435-215-6440', 'John BP', 'UT', 'BP', '84104');
+
+INSERT INTO roles(enabled, name)
+values(true, 'Admin'),
+      (true, 'Manager'),
+      (true, 'Employee'),
+      (true, 'Root');
