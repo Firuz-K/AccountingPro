@@ -32,7 +32,7 @@
                     <!-- Filter starts -->
                     <div class="users-list-filter px-2">
                         <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-right">
-                            <a class="btn btn-success bg-light-success mb-1" ><i
+                            <a th:href="@{/category/create}" class="btn btn-success bg-light-success mb-1" ><i
                                     class="fa fa-plus mr-1"></i>Add Product Category</a>
                         </div>
                     </div>
@@ -58,16 +58,19 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr >
-                                                        <td ></td>
-                                                        <td  class="text-truncate">
-                                                            Food
+                                                    <tr th:each="category : ${categories}" >
+                                                        <td th:text="${category.getId()}">
+                                                            <!--                                                            category status-->
+                                                        </td>
+                                                        <td th:text="${category.description}" ></td>
+<!--                                                        <td  class="text-truncate">-->
+<!--                                                            Food-->
+<!--                                                        </td>-->
+                                                        <td th:text="${category.enabled}">
+<!--                                                            category status-->
                                                         </td>
                                                         <td>
-                                                            category status
-                                                        </td>
-                                                        <td>
-                                                            <a >
+                                                            <a th:href="@{/category/edit/{id}(id=${category.getId()})}">
                                                                 <i class="ft-edit"></i>
                                                             </a>
                                                         </td>

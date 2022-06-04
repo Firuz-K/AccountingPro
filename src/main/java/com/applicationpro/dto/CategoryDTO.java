@@ -11,6 +11,12 @@ public class CategoryDTO {
 
     private Long id;
     private String description;
+//    private Boolean status; instead enabled, should we have status, checked UI
     private Boolean enabled;
-//    private CompanyDTO company;
+    private CompanyDTO company;
+
+
+
+
+
 }
