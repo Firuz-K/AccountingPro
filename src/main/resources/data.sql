@@ -24,3 +24,9 @@ values(true, 'Admin'),
       (true, 'Manager'),
       (true, 'Employee'),
       (true, 'Root');
+
+insert into stock_details( price, i_date, quantity, remaining_quantity, product_id)
+
+values (25,'2021-01-05 00:00:00', 5 ,3 ,null),
+(26,'2021-01-05 00:00:00', 10 ,7 ,null),
+(227,'2021-01-05 00:00:00', 15 ,13 ,null);
