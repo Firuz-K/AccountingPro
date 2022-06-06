@@ -32,3 +32,5 @@ values (1, 1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'product t
 
 insert into stock_details( price, i_date, quantity, remaining_quantity, product_id)
 values (25,'2021-01-05 00:00:00', 5 ,3 ,1);
+
+
