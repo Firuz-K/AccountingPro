@@ -8,8 +8,6 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 // To-do: Annotations for each field.
 
 @Entity
@@ -28,7 +26,7 @@ public class ClientVendor extends BaseEntity {
     private Company company;
 
     @Enumerated(EnumType.STRING)
-    private CompanyType type;
+    private CompanyType companyType;
 
     private String zipCode;
 
