@@ -30,3 +30,7 @@ insert into stock_details( price, i_date, quantity, remaining_quantity, product_
 values (25,'2021-01-05 00:00:00', 5 ,3 ,null),
 (26,'2021-01-05 00:00:00', 10 ,7 ,null),
 (227,'2021-01-05 00:00:00', 15 ,13 ,null);
+
+Insert into products(id, created_by, created_time, is_deleted, updated_by, updated_time, description, enabled, low_limit_alert, name, new_column, product_status, qty, tax, unit, category_id, company_id)
+values (1, 1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'product test', true,
+        '1', 'Product test description', '1', 'Active', '11', '3214','Gallon',null,1)
