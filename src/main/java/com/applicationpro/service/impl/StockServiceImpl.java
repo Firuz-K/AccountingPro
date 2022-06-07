@@ -1,5 +1,6 @@
 package com.applicationpro.service.impl;
 
+import com.applicationpro.dto.ProductDTO;
 import com.applicationpro.dto.StockDTO;
 import com.applicationpro.repository.StockRepository;
 import com.applicationpro.service.StockService;
@@ -31,4 +32,9 @@ public class StockServiceImpl implements StockService {
     public StockDTO findByID(Long id) {
         return mapperUtil.convert(stockRepository.findById(id).get(), new StockDTO());
     }
+
+//    @Override
+//    public StockDTO findStockByProductId(Long id) {
+//        return stockRepository.findStockByProductId(id);
+//    }
 }
