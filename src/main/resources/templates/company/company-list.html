@@ -32,7 +32,7 @@
                     <!-- Filter starts -->
                     <div class="users-list-filter px-2">
                         <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-right">
-                            <a class="btn btn-success bg-light-success mb-1" ><i
+                            <a class="btn btn-success bg-light-success mb-1" th:href="@{/company/company-add}" ><i
                                     class="fa fa-plus mr-1"></i>Add Company</a>
                         </div>
                     </div>
@@ -63,14 +63,14 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr >
-                                                        <td ></td>
-                                                        <td  class="text-truncate"></td>
-                                                        <td ></td>
-                                                        <td ></td>
-                                                        <td ></td>
-                                                        <td ></td>
-                                                        <td ></td>
+                                                       <tr th:each="company, comp: ${companyList}">
+                                                           <td th:text="${comp.count}"></td>
+                                                           <td th:text="${company.title}" class="text-truncate"></td>
+                                                           <td th:text="${company.representative}"></td>
+                                                           <td th:text="${company.email}"></td>
+                                                           <td th:text="${company.phone}"></td>
+                                                           <td th:text="${company.zip}"></td>
+                                                             <td th:text="${company.state}"></td> <!-- -->
                                                         <td>
                                                             <span
 
