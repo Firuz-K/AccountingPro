@@ -2,7 +2,7 @@ package com.applicationpro.enums;
 
 public enum Unit {
 
-    LB("Pound"), PC("Piece");
+    LBS("Pounds"), PCS("Pieces");
 
     private final String value;
 
