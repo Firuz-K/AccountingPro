@@ -28,6 +28,13 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public List<CompanyDTO> findAll() {
+        return companyRepository.findAll().stream()
+                .map(company -> mapperUtil.convert(company, new CompanyDTO()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<CompanyDTO> listAllActiveCompanies() {
         return null;
     }

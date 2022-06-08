@@ -1,6 +1,7 @@
 package com.applicationpro.service;
 
 import com.applicationpro.dto.CompanyDTO;
+import com.applicationpro.entity.Company;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ public interface CompanyService {
 
     List<CompanyDTO> listAllCompanies();
 
+    List<CompanyDTO> findAll();
     List<CompanyDTO> listAllActiveCompanies();
 
     CompanyDTO findCompanyById(Long id);
@@ -17,4 +19,6 @@ public interface CompanyService {
     void update(CompanyDTO companyDTO);
 
     void delete(CompanyDTO companyDTO);
+
+
 }
