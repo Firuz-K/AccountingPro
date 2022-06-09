@@ -1,6 +1,7 @@
 package com.applicationpro.service.impl;
 
 import com.applicationpro.dto.CompanyDTO;
+import com.applicationpro.entity.Company;
 import com.applicationpro.repository.CompanyRepository;
 import com.applicationpro.service.CompanyService;
 import com.applicationpro.util.MapperUtil;
@@ -46,7 +47,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void save(CompanyDTO companyDTO) {
-
+        companyDTO.setEnabled(true);
+        companyRepository.save(mapperUtil.convert(companyDTO, new Company()));
     }
 
     @Override
