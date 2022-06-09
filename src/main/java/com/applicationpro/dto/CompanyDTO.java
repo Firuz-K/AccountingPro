@@ -22,8 +22,9 @@ public class CompanyDTO {
     private LocalDate establishmentDate;
     private String phone;
     private State state;
+    boolean enabled;
 
-    public CompanyDTO(String title, String address1, String address2, String zip, String representative, String email, LocalDate establishmentDate, String phone, State state) {
+    public CompanyDTO(String title, String address1, String address2, String zip, String representative, String email, LocalDate establishmentDate, String phone, State state, boolean enabled) {
         this.title = title;
         this.address1 = address1;
         this.address2 = address2;
@@ -33,5 +34,6 @@ public class CompanyDTO {
         this.establishmentDate = establishmentDate;
         this.phone = phone;
         this.state = state;
+        this.enabled = enabled;
     }
 }

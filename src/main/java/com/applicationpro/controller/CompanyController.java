@@ -27,30 +27,32 @@ public class CompanyController {
     }
 
     @GetMapping("/company-list")
-    public String listCompanies(Model model){
-       List<CompanyDTO> companyList = companyService.listAllCompanies();
+    public String listCompanies(Model model) {
+        List<CompanyDTO> companyList = companyService.listAllCompanies();
         logger.info("Company list: " + companyList);
 
         model.addAttribute("companyList", companyList);
-        return "company/company-list";
+        return "/company/company-list";
     }
 
     @GetMapping("/company-add")
-    public String addCompany(Model model){
+    public String addCompany(Model model) {
 
-       // model.addAttribute("company", new CompanyDTO());
-       // model.addAttribute("stateList", List.of(State.values()));
+        model.addAttribute("company", new CompanyDTO());
+        model.addAttribute("stateList", List.of(State.values()));
 
-        return "company/company-add";
+        return "/company/company-add";
     }
 
     @PostMapping("/company-add")
-    public String addCompany(@ModelAttribute("company") CompanyDTO companyDTO){
-      // logger.info("Company to be added: " + companyDTO);
-       //companyService.save(companyDTO);
+    public String addCompany(@ModelAttribute("company") CompanyDTO companyDTO) {
+        logger.info("Company to be added: " + companyDTO);
 
-        return "redirect:company/company-add";
+        companyService.save(companyDTO);
 
+        return "redirect:/company/company-add";
     }
+
+
 
 }
