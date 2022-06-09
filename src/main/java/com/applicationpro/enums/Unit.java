@@ -2,7 +2,13 @@ package com.applicationpro.enums;
 
 public enum Unit {
 
-    LBS("Pounds"), PCS("Pieces");
+    LB("Pound"),
+    PC("Piece"),
+    M("Meter"),
+    KG("Kilogram"),
+    IN("Inch"),
+    GAL("Gallon"),
+    L("Liter");
 
     private final String value;
 
