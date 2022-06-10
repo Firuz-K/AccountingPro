@@ -49,6 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category convertedCategory = mapperUtil.convert(categoryDTO,new Category());
         //set it to converted object
         convertedCategory.setId(category.getId());
+        convertedCategory.setCompany(category.getCompany());
         convertedCategory.setEnabled(category.getEnabled());
         //save updated user to DB
         categoryRepository.save(convertedCategory);

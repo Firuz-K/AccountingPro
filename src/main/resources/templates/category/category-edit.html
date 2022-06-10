@@ -98,13 +98,19 @@
                                                             <!--                                                               <span  th:if="${errorMessage}!=null" th:onclick="'alert(\'This category has products\');'" > </span>-->
 
 
-                                                            <button type="reset" class="btn btn-secondary">Cancel
-                                                            </button>
+<!--                                                            <button type="reset" class="btn btn-secondary">Cancel-->
+<!--                                                            </button>-->
+
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <!-- Account form ends -->
+                                                <br>
                                             </div>
+                                            <a th:href="@{/category/list}" >
+                                                <button type="reset" class="btn btn-secondary">Cancel
+                                                </button>
+                                            </a>
                                             <!-- Account content ends -->
 
 

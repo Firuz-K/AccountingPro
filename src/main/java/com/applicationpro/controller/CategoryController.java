@@ -22,7 +22,7 @@ public class CategoryController {
         model.addAttribute("categories",categoryService.listAllCategories());
 
 
-        return "category/category-list";
+        return "/category/category-list";
     }
 
     @GetMapping("/create")
@@ -30,7 +30,7 @@ public class CategoryController {
 
         model.addAttribute("category", new CategoryDTO());
 
-        return "category/category-add";
+        return "/category/category-add";
 
     }
 
@@ -49,7 +49,7 @@ public class CategoryController {
 
         model.addAttribute("category",categoryService.findById(id));
 
-        return "category/category-edit";
+        return "/category/category-edit";
     }
 
     @PostMapping("/edit/{id}")
@@ -63,7 +63,7 @@ public class CategoryController {
     @DeleteMapping("/delete/{id}")
     public String deleteCategory(@PathVariable("id") Long id){
         categoryService.deleteById(id);
-        return "category/category-list";
+        return "/category/list";
     }
 
 

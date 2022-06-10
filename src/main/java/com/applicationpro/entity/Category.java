@@ -25,6 +25,7 @@ public class Category extends BaseEntity {
 //    private List<Company> companies;
 
     @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
     private Company company;
 
 }
