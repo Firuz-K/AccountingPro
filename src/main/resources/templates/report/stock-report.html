@@ -36,6 +36,9 @@
                 </div>
 
                 <!-- File export table -->
+                <form th:object="${stock}">
+
+
                 <section id="file-export">
                     <div class="row">
                         <div class="col-12">
@@ -60,15 +63,15 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr >
-                                                    <td ></td>
-                                                    <td ></td>
-                                                    <td  ></td>
-                                                    <td >
+                                                    <td th:field="*{date}" ></td>
+                                                    <td th:field="*{product.getName()}" ></td>
+                                                    <td  th:field="*{quantity}"></td>
+                                                    <td  >
 
                                                         <span  class="badge bg-light-blue">PURCHASE</span>
                                                         <span  class="badge bg-light-success">SALE</span>
                                                     </td>
-                                                    <td  ></td>
+                                                    <td th:field="*{price}"  ></td>
 
                                                 </tr>
 
@@ -90,6 +93,7 @@
                         </div>
                     </div>
                 </section>
+                </form>
                 <!-- File export table -->
 
             </div>

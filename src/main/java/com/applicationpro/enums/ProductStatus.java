@@ -2,7 +2,7 @@ package com.applicationpro.enums;
 
 public enum ProductStatus {
 
-    ACTIVE("Active"), INACTIVE("Inactive");
+    ACTIVE("Active"), PASSIVE("Inactive");
 
     private final String value;
 

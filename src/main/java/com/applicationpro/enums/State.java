@@ -1,13 +1,13 @@
 package com.applicationpro.enums;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
-                    //This file to be modified after UI requirements or sample website is provided. Eyyup.
+//This file to be modified after UI requirements or sample website is provided. Eyyup.
 public enum State {
 
-    ALABAMA("Alabama", "AL"), ALASKA("Alaska", "AK"), AMERICAN_SAMOA("American Samoa", "AS"), ARIZONA("Arizona", "AZ"), ARKANSAS(
+    /*
+       ALABAMA("Alabama", "AL"), ALASKA("Alaska", "AK"), AMERICAN_SAMOA("American Samoa", "AS"), ARIZONA("Arizona", "AZ"), ARKANSAS(
             "Arkansas", "AR"), CALIFORNIA("California", "CA"), COLORADO("Colorado", "CO"), CONNECTICUT("Connecticut", "CT"), DELAWARE(
             "Delaware", "DE"), DISTRICT_OF_COLUMBIA("District of Columbia", "DC"), FEDERATED_STATES_OF_MICRONESIA(
             "Federated States of Micronesia", "FM"), FLORIDA("Florida", "FL"), GEORGIA("Georgia", "GA"), GUAM("Guam", "GU"), HAWAII(
@@ -23,6 +23,23 @@ public enum State {
             "Utah", "UT"), VERMONT("Vermont", "VT"), VIRGIN_ISLANDS("Virgin Islands", "VI"), VIRGINIA("Virginia", "VA"), WASHINGTON(
             "Washington", "WA"), WEST_VIRGINIA("West Virginia", "WV"), WISCONSIN("Wisconsin", "WI"), WYOMING("Wyoming", "WY"), UNKNOWN(
             "Unknown", "");
+     */
+    AL("Alabama", "AL"), AK("Alaska", "AK"), AS("American Samoa", "AS"), AZ("Arizona", "AZ"), AR(
+            "Arkansas", "AR"), CA("California", "CA"), CO("Colorado", "CO"), CT("Connecticut", "CT"), DE(
+            "Delaware", "DE"), DC("District of Columbia", "DC"), FM(
+            "Federated States of Micronesia", "FM"), FL("Florida", "FL"), GE("Georgia", "GA"), GU("Guam", "GU"), HI(
+            "Hawaii", "HI"), ID("Idaho", "ID"), IL("Illinois", "IL"), IN("Indiana", "IN"), IA("Iowa", "IA"), KS(
+            "Kansas", "KS"), KY("Kentucky", "KY"), LA("Louisiana", "LA"), ME("Maine", "ME"), MD("Maryland", "MD"), MH(
+            "Marshall Islands", "MH"), MA("Massachusetts", "MA"), MI("Michigan", "MI"), MN("Minnesota", "MN"), MS(
+            "Mississippi", "MS"), MO("Missouri", "MO"), MT("Montana", "MT"), NE("Nebraska", "NE"), NV("Nevada",
+            "NV"), NH("New Hampshire", "NH"), NJ("New Jersey", "NJ"), NM("New Mexico", "NM"), NY(
+            "New York", "NY"), NC("North Carolina", "NC"), ND("North Dakota", "ND"), MP(
+            "Northern Mariana Islands", "MP"), OH("Ohio", "OH"), OK("Oklahoma", "OK"), OR("Oregon", "OR"), PW("Palau",
+            "PW"), PA("Pennsylvania", "PA"), PR("Puerto Rico", "PR"), RI("Rhode Island", "RI"), SC(
+            "South Carolina", "SC"), SD("South Dakota", "SD"), TN("Tennessee", "TN"), TX("Texas", "TX"), UT(
+            "Utah", "UT"), VT("Vermont", "VT"), VI("Virgin Islands", "VI"), VA("Virginia", "VA"), WA(
+            "Washington", "WA"), WV("West Virginia", "WV"), WI("Wisconsin", "WI"), WY("Wyoming", "WY"), UN(
+            "Unknown", "UN");
 
     /**
      * The state's name.
@@ -65,7 +82,6 @@ public enum State {
     public String getAbbreviation() {
         return abbreviation;
     }
-
     /**
      * Gets the enum constant with the specified abbreviation.
      *
@@ -78,7 +94,7 @@ public enum State {
         if (state != null) {
             return state;
         } else {
-            return UNKNOWN;
+            return UN;
         }
     }
 
@@ -87,7 +103,7 @@ public enum State {
         try {
             return valueOf(enumName);
         } catch (final IllegalArgumentException e) {
-            return State.UNKNOWN;
+            return State.UN;
         }
     }
 

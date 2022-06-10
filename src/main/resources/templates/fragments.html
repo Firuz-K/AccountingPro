@@ -171,6 +171,7 @@
                 <ul class="dropdown-menu">
                     <li data-menu="" ><a
                             class="dropdown-item d-flex align-items-center"
+                            th:href="@{/company/company-list}"
                             data-toggle="dropdown"><i class="ft-arrow-right submenu-icon"></i><span
                             data-i18n="Email">Company Registration</span></a>
                     </li>
@@ -181,6 +182,7 @@
                     </li>
                     <li data-menu="" ><a
                             class="dropdown-item d-flex align-items-center"
+                            th:href="@{/clientvendor/client-vendor-list}"
                             data-toggle="dropdown"><i class="ft-arrow-right submenu-icon"></i><span
                             data-i18n="Task Board">Client/Vendor Registration</span></a>
                     </li>
@@ -192,10 +194,12 @@
                     data-i18n="UI Kit">Stock Management</span></a>
                 <ul class="dropdown-menu">
                     <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                        th:href="@{/product/product-list}"
                                         data-toggle="dropdown"><i class="ft-arrow-right submenu-icon"></i><span
                             data-i18n="Grid">Products</span></a>
                     </li>
                     <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                        th:href="@{/category/category-list}"
                                         data-toggle="dropdown"><i class="ft-arrow-right submenu-icon"></i><span
                             data-i18n="Typography">Category</span></a>
                     </li>
@@ -223,10 +227,12 @@
                 <ul class="dropdown-menu">
 
                     <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                        th:href="@{report/stock-report}"
                                         data-toggle="dropdown"><i class="ft-arrow-right submenu-icon"></i><span
                             data-i18n="Grid">Stock Report</span></a>
                     </li>
                     <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                        th:href="@{report/profit-loss-report}"
                                         data-toggle="dropdown"><i class="ft-arrow-right submenu-icon"></i><span
                             data-i18n="Typography">Profit / Loss Report</span></a>
                     </li>

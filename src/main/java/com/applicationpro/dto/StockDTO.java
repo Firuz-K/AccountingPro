@@ -1,32 +1,23 @@
-package com.applicationpro.entity;
+package com.applicationpro.dto;
 
+import com.applicationpro.entity.Product;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "stock_details")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Stock {
+@Data
+public class StockDTO {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "i_date",columnDefinition = "DATE")
     private LocalDate date;
-
     private int quantity;
     private int remainingQuantity;
     private BigDecimal price;
-
-    @OneToOne
-    @JoinColumn(name = "product_id")
     private Product product;
 
 }
+
