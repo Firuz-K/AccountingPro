@@ -6,6 +6,7 @@ public enum Unit {
     PC("Piece"),
     M("Meter"),
     KG("Kilogram"),
+    FT("Feet"),
     IN("Inch"),
     GAL("Gallon"),
     L("Liter");
