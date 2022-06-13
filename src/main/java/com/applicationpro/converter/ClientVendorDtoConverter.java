@@ -1,11 +1,11 @@
 package com.applicationpro.converter;
 
-import com.applicationpro.dto.ClientVendorDto;
+import com.applicationpro.dto.ClientVendorDTO;
 import com.applicationpro.service.ClientVendorService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 
-public class ClientVendorDtoConverter implements Converter<String, ClientVendorDto> {
+public class ClientVendorDtoConverter implements Converter<String, ClientVendorDTO> {
 
     ClientVendorService clientVendorService;
 
@@ -14,7 +14,7 @@ public class ClientVendorDtoConverter implements Converter<String, ClientVendorD
     }
 
     @Override
-    public ClientVendorDto convert(String source) {
+    public ClientVendorDTO convert(String source) {
         if (source == null || source.equals("")) {
             return null;
         }

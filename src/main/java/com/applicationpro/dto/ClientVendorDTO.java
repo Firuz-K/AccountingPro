@@ -8,15 +8,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 @NoArgsConstructor
 @Getter
 @Setter
 @AllArgsConstructor
 @Data
-public class ClientVendorDto {
+public class ClientVendorDTO {
     private Long id;
     private String companyName;
     private String phone;

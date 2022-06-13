@@ -1,5 +1,7 @@
 package com.applicationpro.entity;
 
+import com.applicationpro.enums.InvoiceStatus;
+import com.applicationpro.enums.InvoiceType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +11,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "invoices")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,16 +18,22 @@ import java.time.LocalDate;
 public class Invoice extends BaseEntity{
 
     private String invoiceNumber;
-    private String invoiceStatus;
-    private String invoiceType;
+
+    @Enumerated(EnumType.STRING)
+    private InvoiceStatus invoiceStatus;
+
+    @Enumerated(EnumType.STRING)
+    private InvoiceType invoiceType;
+
     @Column(columnDefinition = "DATE")
     private LocalDate invoiceDate;
+
     @ManyToOne
-    @JoinColumn(name = "sptable_id")
-    private ClientVendor clientVendor;
+    @JoinColumn(name = "clientvendor_id")
+    ClientVendor clientVendor;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
-    private Company company;
-    private boolean enabled;
+    Company company;
 }
+

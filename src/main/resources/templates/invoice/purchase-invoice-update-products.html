@@ -37,7 +37,7 @@
                                                  aria-labelledby="account-tab">
                                                 <!-- INVOICE PART BEGIN-->
                                                 <form class="needs-validation"
-                                                      th:action="@{/invoice/purchase-invoice-list}"
+                                                      th:action="@{/invoice/purchase-invoice-create}"
                                                       th:object="${invoice}"
                                                       method="post"
                                                       novalidate>
@@ -45,7 +45,7 @@
                                                         <div class="col-12 col-md-3">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label>Invoice Number</label>
+                                                                    <label>Company Name</label>
                                                                     <input type="text" class="form-control" required=""
                                                                            aria-invalid="false" disabled=""
                                                                            id="invoiceNumber" name="invoiceNumber"
@@ -78,14 +78,14 @@
                                                                            aria-invalid="false">
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" th:field="*{id}">
                                                         </div>
-                                                        <input type="hidden" th:field="*{id}">
                                                         <div class="col-12 col-md-1">
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label></label>
                                                                     <a class="btn btn-danger"
-                                                                       th:href="@{purchase-invoice-list}"
+                                                                       th:href="@{/invoice/purchase-invoice-list}"
                                                                        type="cancel" value="cancel">CANCEL
                                                                     </a>
                                                                 </div>
@@ -95,7 +95,7 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label></label>
-                                                                    <button class="btn btn-success disabled" type="submit"
+                                                                    <button class="btn btn-success" type="submit"
                                                                             name="action">CREATE
                                                                     </button>
                                                                 </div>
@@ -190,13 +190,22 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
+                                                                <tr th:each="invoiceProduct:${invoiceProductList}">
+                                                                    <td th:text="${invoiceProduct.name}"></td>
+                                                                    <td th:text="${invoiceProduct.price}"></td>
+                                                                    <td th:text="${invoiceProduct.quantity}"></td>
+                                                                    <td th:text="${invoiceProduct.tax}"></td>
+                                                                    <td th:text="${#numbers.formatDecimal(invoiceProduct.price*invoiceProduct.quantity*(invoiceProduct.tax+100)/100,0,'POINT',2,'COMMA')}"></td>
+                                                                    <td>
+                                                                        <form method="post"
+                                                                              data-th-action="@{/invoice/purchase-invoice-update-products/{id}(id=${invoiceProduct.getId()})}">
+                                                                            <input type="hidden" id="invoiceId"
+                                                                                   name="invoiceId"
+                                                                                   th:value="${invoice.id}">
+                                                                            <button class="ft-trash-2 btn btn-danger mr-1 mb-1"
+                                                                                    type="submit"></button>
+                                                                        </form>
+                                                                    </td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -205,10 +214,12 @@
                                                 </div>
                                                 <!-- INVOICE PRODUCT LIST END-->
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-3 mt-sm-2">
-                                                    <a class="btn btn-danger" th:href="@{purchase-invoice-list}"
-                                                       type="cancel" value="cancel">CANCEL
-                                                    </a>
-
+                                                    <form
+                                                            method="post">
+                                                        <button class="btn btn-danger mb-2 mb-sm-0 mr-sm-2"
+                                                                type="submit" name="action" value="cancel">Cancel
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

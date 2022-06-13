@@ -1,11 +1,11 @@
 package com.applicationpro.enums;
 
-public enum InvoiceStatus {
-    DRAFT("Draft"), APPROVED("Approved");
+public enum InvoiceType {
+    PURCHASE("Purchase"),SALE("Sale");
 
     private final String value;
 
-    InvoiceStatus(String value) {
+    InvoiceType (String value) {
         this.value = value;
     }
 
