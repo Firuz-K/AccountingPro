@@ -35,7 +35,6 @@ public class ClientVendor extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private State state;
 
-    boolean enabled;
 //
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private User createdBy;

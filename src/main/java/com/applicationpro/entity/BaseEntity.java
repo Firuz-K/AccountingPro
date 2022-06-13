@@ -39,4 +39,5 @@ public class BaseEntity {
         this.updatedTime = LocalDateTime.now();
         this.updatedBy = 1L;
     }
+    private Boolean enabled;
 }

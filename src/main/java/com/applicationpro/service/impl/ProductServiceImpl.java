@@ -4,6 +4,7 @@ import com.applicationpro.dto.ProductDTO;
 import com.applicationpro.entity.Product;
 import com.applicationpro.enums.ProductStatus;
 import com.applicationpro.repository.ProductRepository;
+import com.applicationpro.service.InvoiceProductService;
 import com.applicationpro.service.ProductService;
 import com.applicationpro.util.MapperUtil;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
     private final MapperUtil mapperUtil;
     private final ProductRepository productRepository;
+
 
     public ProductServiceImpl(MapperUtil mapperUtil, ProductRepository productRepository) {
         this.mapperUtil = mapperUtil;
@@ -61,6 +63,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO findById(Long productId) {
-        return null;
+        return mapperUtil.convert(productRepository.getById(productId), new ProductDTO());
+    }
+
+    @Override
+    public List<ProductDTO> listAllActiveProducts() {
+        return productRepository.findAllByEnabledIsTrue().stream()
+                .map(product -> mapperUtil.convert(product, new ProductDTO()))
+                .collect(Collectors.toList());
+
     }
 }

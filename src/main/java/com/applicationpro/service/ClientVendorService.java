@@ -1,21 +1,21 @@
 package com.applicationpro.service;
 
-import com.applicationpro.dto.ClientVendorDto;
+import com.applicationpro.dto.ClientVendorDTO;
 
 import java.util.List;
 
 public interface ClientVendorService {
-    List<ClientVendorDto> listAllClientVendors();
+    List<ClientVendorDTO> listAllClientVendors();
 
-    List<ClientVendorDto> listAllActiveClients();
+    List<ClientVendorDTO> listAllActiveClients();
 
-    List<ClientVendorDto> listAllActiveVendors();
+    List<ClientVendorDTO> listAllActiveVendors();
 
-    ClientVendorDto findClientVendorById(Long id);
+    ClientVendorDTO findClientVendorById(Long id);
 
-    void save(ClientVendorDto clientVendorDto);
+    void save(ClientVendorDTO clientVendorDto);
 
-    void update(ClientVendorDto clientVendorDto);
+    void update(ClientVendorDTO clientVendorDto);
 
     void delete(Long id);
 }
