@@ -1,200 +1,96 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Invoice PDF</title>
-    <style>
-        body{margin-top:20px;
-            background-color: #f7f7ff;
-        }
-        #invoice {
-            padding: 0px;
+
+<head th:fragment="page_head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description"
+          content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+          content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+
+
+    <!--<link rel="shortcut icon" type="image/x-icon" th:href="@{/img/ico/favicon.ico}">
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/ico/favicon-32.png}"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="shortcut icon" type="image/png" href="/media/images/favicon.png">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=aadaa7a732793b5fe2d64919b0c6763c1">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900"
+          rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    <!-- font icons-->
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/feather/style.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/simple-line-icons/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/css/perfect-scrollbar.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/css/prism.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/css/switchery.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/css/chartist.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{vendors/css/datatables/dataTables.bootstrap4.min.css}">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN APEX CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-extended.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/colors.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/components.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/themes/layout-dark.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/plugins/switchery.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/css/pickadate/pickadate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/plugins/form-validation.css}">
+    <!-- END APEX CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/core/menu/horizontal-menu.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages/dashboard2.css}">
+    <link rel="stylesheet" th:href="@{/fonts/weathericons/css/weather-icons.css}">
+    <link rel="stylesheet" th:href="@{/fonts/weathericons/css/weather-icons-wind.css}">
+    <style type="text/css" class="init">
+        .image-ruler {
+            height: 50px;
+            align-items: flex-end;
+            margin-top: -10px;
+            margin-left: -50px;
+            color: black;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        .invoice {
-            position: relative;
-            background-color: #FFF;
-            min-height: 680px;
-            padding: 15px
+        .person {
+            color: #0e0c28;
+            font-weight: bold;
         }
 
-        .invoice header {
-            padding: 10px 0;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #0d6efd
+        .login-page-title {
+            width: 400px;
+            color: black;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        .invoice .company-details {
-            text-align: right
-        }
-
-        .invoice .company-details .name {
-            margin-top: 0;
-            margin-bottom: 0
-        }
-
-        .invoice .contacts {
-            margin-bottom: 20px
-        }
-
-        .invoice .invoice-to {
-            text-align: left
-        }
-
-        .invoice .invoice-to .to {
-            margin-top: 0;
-            margin-bottom: 0
-        }
-
-        .invoice .invoice-details {
-            text-align: right
-        }
-
-        .invoice .invoice-details .invoice-id {
-            margin-top: 0;
-            color: #0d6efd
-        }
-
-        .invoice main {
-            padding-bottom: 50px
-        }
-
-        .invoice main .thanks {
-            margin-top: -100px;
-            font-size: 2em;
-            margin-bottom: 50px
-        }
-
-        .invoice main .notices {
-            padding-left: 6px;
-            border-left: 6px solid #0d6efd;
-            background: #e7f2ff;
-            padding: 10px;
-        }
-
-        .invoice main .notices .notice {
-            font-size: 1.2em
-        }
-
-        .invoice table {
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            margin-bottom: 20px
-        }
-
-        .invoice table td,
-        .invoice table th {
-            padding: 15px;
-            background: #eee;
-            border-bottom: 1px solid #fff
-        }
-
-        .invoice table th {
-            white-space: nowrap;
-            font-weight: 400;
-            font-size: 16px
-        }
-
-        .invoice table td h3 {
-            margin: 0;
-            font-weight: 400;
-            color: #0d6efd;
-            font-size: 1.2em
-        }
-
-        .invoice table .qty,
-        .invoice table .total,
-        .invoice table .unit {
-            text-align: right;
-            font-size: 1.2em
-        }
-
-        .invoice table .no {
-            color: #fff;
-            font-size: 1.6em;
-            background: #0d6efd
-        }
-
-        .invoice table .unit {
-            background: #ddd
-        }
-
-        .invoice table .total {
-            background: #0d6efd;
-            color: #fff
-        }
-
-        .invoice table tbody tr:last-child td {
-            border: none
-        }
-
-        .invoice table tfoot td {
-            background: 0 0;
-            border-bottom: none;
-            white-space: nowrap;
-            text-align: right;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-top: 1px solid #aaa
-        }
-
-        .invoice table tfoot tr:first-child td {
-            border-top: none
-        }
-        .card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 0px solid rgba(0, 0, 0, 0);
-            border-radius: .25rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 6px 0 rgb(218 218 253), 0 2px 6px 0 rgb(206 206 238);
-        }
-
-        .invoice table tfoot tr:last-child td {
-            color: #0d6efd;
-            font-size: 1.4em;
-            border-top: 1px solid #0d6efd
-        }
-
-        .invoice table tfoot tr td:first-child {
-            border: none
-        }
-
-        .invoice footer {
-            width: 100%;
-            text-align: center;
-            color: #777;
-            border-top: 1px solid #aaa;
-            padding: 8px 0
-        }
-
-        @media print {
-            .invoice {
-                font-size: 11px !important;
-                overflow: hidden !important
-            }
-            .invoice footer {
-                position: absolute;
-                bottom: 10px;
-                page-break-after: always
-            }
-            .invoice>div:last-child {
-                page-break-before: always
-            }
-        }
-
-        .invoice main .notices {
-            padding-left: 6px;
-            border-left: 6px solid #0d6efd;
-            background: #e7f2ff;
-            padding: 10px;
+        .softer {
+            border-radius: 5px;
         }
     </style>
+    <!-- END Page Level CSS-->
+
 </head>
 
 <body class="horizontal-layout horizontal-menu horizontal-menu-padding 2-columns  navbar-sticky" data-open="hover"
@@ -204,108 +100,206 @@
         <div class="main-content">
             <div class="content-overlay"></div>
             <div class="content-wrapper">
-                <section class="users-list-wrapper">
-                    <div class="container">
-                        <div class="card">
-                            <div class="card-body">
-                                <div id="invoice">
-                                    <div class="toolbar hidden-print">
-<!--                                        <div class="text-end">-->
-<!--                                            <a th:href="@{/pdf/generateToInvoice}" target="_blank" type="button" class="btn btn-dark"><i class="fa fa-edit"  ></i>Overview</a>-->
-<!--                                            <a th:href="@{/pdf/downloadToInvoice}"  type="button" class="btn btn-danger"><i class="fa fa-file-pdf-o" ></i> Export as PDF</a>-->
-<!--                                        </div>-->
-                                        <hr>
-                                    </div>
-                                    <div class="invoice overflow-auto">
-                                        <div style="min-width: 600px">
-                                            <header>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <a href="javascript:">
-                                                            <img src="assets/images/logo-icon.png" width="80" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="col company-details">
-                                                        <h2 class="name">
-                                                            <a target="_blank" href="javascript:"
-                                                               >
-                                                            </a>
-                                                        </h2>
-                                                        <div><a ></a></div>
-                                                        <div><a ></a></div>
-                                                        <div><a ></a></div>
-                                                        <div><a ></a></div>
-                                                        <div><a ></a></div>
+                <!-- Invoice template starts -->
+                <!--                <div class="row">-->
+                <!--                    <div class="col-12">-->
+                <!--                        <div class="content-header">Invoice</div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <section class="invoice-template">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content p-3">
+                                    <div id="invoice-template" class="card-body pb-0">
+                                        <!-- Invoice Company Details starts -->
+                                        <div id="invoice-company-details" class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="media">
+                                                    <img src="../../../app-assets/img/logos/logo-color-big.png"
+                                                         alt="company logo" width="80" height="80">
+                                                    <div class="media-body ml-4">
+                                                        <ul class="m-0 list-unstyled">
+<!--&lt;!&ndash;                                                            <li th:text="${invoice.company.title}"&ndash;&gt;-->
+<!--                                                                class="text-bold-800"></li>-->
+<!--                                                            <li th:text="${invoice.company.address1}"></li>-->
+<!--                                                            <li th:text="${invoice.company.state.abbreviation+' '+invoice.company.zipCode+', USA'}"></li>-->
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                            </header>
-                                            <main>
-                                                <div class="row contacts">
-                                                    <div class="col invoice-to">
-                                                        <div class="text-gray-light">INVOICE TO:</div>
-                                                        <h2 class="to" ></h2>
-                                                        <div class="address" ></div>
-                                                        <div class="address" ></div>
-                                                        <div class="email"><a href="mailto:john@example.com" ></a></div>
-                                                    </div>
-                                                    <div class="col invoice-details">
-                                                        <h1 class="invoice-id" ></h1>
-                                                        <div class="date" ></div>
-                                                    </div>
-                                                </div>
-                                                <table>
-                                                    <thead>
+
+                                            </div>
+                                            <div class="col-md-6 col-12 text-right">
+                                                <h2 class="primary text-uppercase">Invoice</h2>
+                                                <p th:text="${invoice.invoiceNumber}" class="pb-3"></p>
+                                                <!--                                                <ul class="px-0 list-unstyled">-->
+                                                <!--                                                    <li>Balance Due</li>-->
+                                                <!--                                                    <li class="font-medium-2 text-bold-700">$12,000.00</li>-->
+                                                <!--                                                </ul>-->
+                                            </div>
+                                        </div>
+                                        <!-- Invoice Company Details ends -->
+                                        <!-- Invoice Customer Details starts -->
+                                        <div id="invoice-customer-details" class="row">
+                                            <div class="col-12 text-left">
+                                                <p class="text-bold-800">Invoice To:</p>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <ul class="m-0 list-unstyled">
+                                                    <li th:text="${invoice.clientVendor.companyName}"
+                                                        class="text-bold-800"></li>
+                                                    <li th:text="${invoice.clientVendor.address}"></li>
+                                                    <li th:text="${invoice.clientVendor.state}+${' - '+ invoice.clientVendor.zipCode}"></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6 col-12 text-right">
+                                                <p class="text-bold-800"> Invoice Date :<span
+                                                        th:text="${' '+invoice.invoiceDate}"></span></p>
+                                                <p class="text-bold-800"><span>Terms :</span> Due on Receipt</p>
+                                            </div>
+                                        </div>
+                                        <!-- Invoice Customer Details ends -->
+                                        <!-- Invoice Items Details starts -->
+                                        <div id="invoice-items-details">
+                                            <div class="row">
+                                                <div class="table-responsive col-12">
+                                                    <table class="table mt-3">
+                                                        <thead>
                                                         <tr>
-                                                            <th class="text-left">Product</th>
-                                                            <th class="text-right">Price</th>
-                                                            <th class="text-right">Quantity</th>
-                                                            <th class="text-right">Tax</th>
+                                                            <th>#</th>
+                                                            <th>Product</th>
+                                                            <th class="text-md-center">Price</th>
+                                                            <th class="text-md-center">Quantity</th>
+                                                            <th class="text-md-center">Tax</th>
                                                             <th class="text-right">Total</th>
                                                         </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr >
-                                                            <td class="text-left"><h3 ></h3></td>
-                                                            <td class="unit" ></td>
-                                                            <td class="extra" ></td>
-                                                            <td class="total" ></td>
-                                                            <td class="total" ></td>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="invoiceProduct,istat:${invoiceProductList}">
+                                                            <th th:text="${istat.count}" scope="row"></th>
+                                                            <td>
+                                                                <p th:text="${invoiceProduct.product.name}"></p>
+                                                                <p th:text="${invoiceProduct.product.description}"
+                                                                   class="text-muted"></p>
+                                                            </td>
+                                                            <td th:text="${'$'+#numbers.formatDecimal(invoiceProduct.price,0,'POINT',2,'COMMA')}"
+                                                                class="text-md-center"></td>
+                                                            <td th:text="${#numbers.formatDecimal(invoiceProduct.quantity,0,'POINT',2,'COMMA')}"
+                                                                class="text-md-center"></td>
+                                                            <td th:text="${'%'+#numbers.formatDecimal(invoiceProduct.tax,0,'POINT',2,'COMMA')}"
+                                                                class="text-md-center"></td>
+                                                            <td th:text="${'$'+#numbers.formatDecimal(invoiceProduct.price*invoiceProduct.quantity*(invoiceProduct.tax+100)/100,0,'POINT',2,'COMMA')}"
+                                                                class="text-right"></td>
                                                         </tr>
-                                                    </tbody>
-                                                    <tfoot>
-                                                    <tr>
-                                                        <td colspan="2"></td>
-                                                        <td colspan="2">SUBTOTAL</td>
-                                                        <td>5100</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"></td>
-                                                        <td colspan="2">TAX 25%</td>
-                                                        <td>510</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"></td>
-                                                        <td colspan="2">GRAND TOTAL</td>
-                                                        <td>5610</td>
-                                                    </tr>
-                                                    </tfoot>
-                                                </table>
-                                                <div class="notices">
-                                                    <div>NOTICE:</div>
-                                                    <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                            </main>
-                                            <footer>Invoice was created on a computer and is valid without the signature and seal.</footer>
+                                            </div>
+                                            <div class="row mt-3 mt-md-0">
+                                                <div class="col-md-6 col-12 text-left">
+                                                    <p class="text-bold-700 mb-1 ml-1">Payment Methods:</p>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <table class="table table-borderless table-sm">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>Bank name:</td>
+                                                                    <td class="text-right">ABC Bank, USA</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Acc name:</td>
+                                                                    <td class="text-right">Amanda Orton</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>IBAN:</td>
+                                                                    <td class="text-right">FGS165461646546AA</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>SWIFT code:</td>
+                                                                    <td class="text-right">BTNPP34</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <p class="text-bold-700 mb-2 ml-4">Total due</p>
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Sub Total</td>
+                                                                <td th:text="${'$'+#numbers.formatDecimal(totalInvoice.totalAmount,0,'POINT',2,'COMMA')}"
+                                                                    class="text-right">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>TAX</td>
+                                                                <td th:text="${'$'+#numbers.formatDecimal(totalInvoice.totalTax,0,'POINT',2,'COMMA')}"
+                                                                    class="text-right">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-bold-500">Total</td>
+                                                                <td
+                                                                        th:text="${'$'}+${#numbers.formatDecimal(totalInvoice.totalTax+totalInvoice.totalAmount,0,'POINT',2,'COMMA')}"
+                                                                    class="text-bold-500 text-right">
+                                                                </td>
+                                                            </tr>
+                                                            <!--                                                            <tr>-->
+                                                            <!--                                                                <td>Payment Made</td>-->
+                                                            <!--                                                                <td class="danger text-right">(-) $4,688.00</td>-->
+                                                            <!--                                                            </tr>-->
+                                                            <!--                                                            <tr class="text-bold-500">-->
+                                                            <!--                                                                <td>Balance Due</td>-->
+                                                            <!--                                                                <td class="text-right">$12,000.00</td>-->
+                                                            <!--                                                            </tr>-->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
-                                        <div></div>
+                                        <!-- Invoice Items Details ends -->
+                                        <!-- Invoice Footer starts -->
+                                        <div id="invoice-footer">
+                                            <div class="row mt-2 mt-sm-0">
+                                                <div class="col-md-6 col-12 d-flex align-items-center">
+                                                    <div class="terms-conditions mb-2">
+                                                        <h6>Terms &amp; Condition</h6>
+                                                        <p>You know, being a test pilot isn't always the healthiest
+                                                            business in the world. We predict too much for the next year
+                                                            and yet far too little for the next 10.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="signature text-center">
+                                                        <p>Authorized person</p>
+<!--                                                        <img src="../../../app-assets/img/pages/signature-scan.png"-->
+<!--                                                             alt="signature" width="250">-->
+<!--                                                        <h6 th:text="${invoice.company.representative}" class="mt-4">Amanda Orton</h6>-->
+                                                        <p class="text-muted">Managing Director</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 text-center text-sm-right">
+                                                    <button type="button"
+                                                            class="btn btn-primary btn-print mt-2 mt-md-1"><i
+                                                            class="ft-printer mr-1"></i>Print Invoice
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Invoice Footer ends -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-            </div>
+                <!-- Invoice template ends -->            </div>
         </div>
     </div>
     <button class="btn btn-primary scroll-top" type="button"><i class="ft-arrow-up"></i></button>
@@ -315,5 +309,91 @@
 <script th:src="@{/js/dashboard2.js}"></script>
 <script th:src="@{/assets/js/scripts.js}"></script>
 </body>
+
+<footer class="footer undefined undefined" th:fragment="page_footer">
+    <p class="clearfix text-muted m-0"><span>Copyright &copy; 2021 &nbsp;</span><a
+            th:target="_blank" id="pixinventLink">CYDEO</a><span
+            class="d-none d-sm-inline-block">, All rights reserved.</span>
+    </p>
+
+
+    <!-- BEGIN VENDOR JS-->
+    <script th:src="@{/vendors/js/vendors.min.js}"></script>
+    <script th:src="@{/vendors/js/switchery.min.js}"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script th:src="@{/vendors/js/chartist.min.js}"></script>
+    <script th:src="@{/vendors/js/apexcharts.min.js}"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN APEX JS-->
+    <script th:src="@{/js/core/app-menu.js}"></script>
+    <script th:src="@{/js/core/app.js}"></script>
+    <script th:src="@{/js/notification-sidebar.js}"></script>
+    <script th:src="@{/js/customizer.js}"></script>
+    <script th:src="@{/js/scroll-top.js}"></script>
+    <!-- END APEX JS-->
+
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script th:src="@{/vendors/js/jqBootstrapValidation.js}"></script>
+    <!-- END PAGE VENDOR JS-->
+
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script th:src="@{/js/form-validation.js}"></script>
+    <!-- END PAGE LEVEL JS-->
+    <!-- BEGIN: Custom CSS-->
+    <script th:src="@{/assets/js/scripts.js}"></script>
+    <!-- END: Custom CSS-->
+    <!-- END PAGE LEVEL JS-->
+    <script type="text/javascript" src="/media/js/site.js?_=6093ce51057f043716aadf9628fff069"></script>
+    <script type="text/javascript" src="/media/js/dynamic.php?comments-page=examples%2Fstyling%2Fbootstrap5.html"
+            async></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../resources/demo.js"></script>
+    <script type="text/javascript" class="init">
+
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-365466-5']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script th:src="@{/vendor/jquery/jquery-3.3.1.min.js}"></script>
+    <!-- bootstap bundle js -->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.js}"></script>
+    <!-- slimscroll js -->
+    <script th:src="@{/vendor/slimscroll/jquery.slimscroll.js}"></script>
+    <!-- main js -->
+    <script th:src="@{/libs/js/main-js.js}"></script>
+    <!-- chart chartist js -->
+    <script th:src="@{/vendor/charts/chartist-bundle/chartist.min.js}"></script>
+    <!-- sparkline js -->
+    <script th:src="@{/vendor/charts/sparkline/jquery.sparkline.js}"></script>
+    <!-- morris js -->
+    <script th:src="@{/vendor/charts/morris-bundle/raphael.min.js}"></script>
+    <script th:src="@{/vendor/charts/morris-bundle/morris.js}"></script>
+    <!-- chart c3 js -->
+    <script th:src="@{/vendor/charts/c3charts/c3.min.js}"></script>
+    <script th:src="@{/vendor/charts/c3charts/d3-5.4.0.min.js}"></script>
+    <script th:src="@{/vendor/charts/c3charts/C3chartjs.js}"></script>
+    <script th:src="@{/libs/js/dashboard-ecommerce.js}"></script>
+</footer>
+
 
 </html>
