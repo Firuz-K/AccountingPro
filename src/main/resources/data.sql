@@ -25,10 +25,17 @@ values(true, 'Admin'),
       (true, 'Employee'),
       (true, 'Root');
 
+insert into categories(created_by, created_time, is_deleted, updated_by, updated_time, description, enabled,company_id)
+values (1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Furniture', true,1) ,
+(1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Phone', true,1),
+(2, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Clothing', true,1),
+(3, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Electronics', true,1),
+(2, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Appliances', true,1);
+
 
 insert into products( created_by, created_time, is_deleted, updated_by, updated_time, description, enabled, low_limit_alert, name, new_column, product_status, qty, tax, unit, category_id)
-values ( 1,'2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'product test', true,
-        '1', 'Product test description', '1', 'Active', '11', '3214','Gallon',null);
+values ( 1,'2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Apple Phone ', true,
+        1, 'Iphone X', '1', 'ACTIVE', 11, 32,'PC',4);
 
 insert into stock_details( price, i_date, quantity, remaining_quantity, product_id)
 values (25,'2021-01-05 00:00:00', 5 ,3 ,1);
@@ -36,10 +43,4 @@ values (25,'2021-01-05 00:00:00', 5 ,3 ,1);
 
 
 
-insert into categories(created_by, created_time, is_deleted, updated_by, updated_time, description, enabled,company_id)
-values (1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Furniture', true,1) ,
-(1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Phone', true,1),
-(2, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Clothing', true,1),
-(3, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Electronics', true,1),
-(2, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Appliances', true,1);
 
