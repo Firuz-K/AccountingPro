@@ -1,6 +1,6 @@
 package com.applicationpro.controller;
 
-import com.applicationpro.dto.ClientVendorDto;
+import com.applicationpro.dto.ClientVendorDTO;
 import com.applicationpro.enums.State;
 import com.applicationpro.service.ClientVendorService;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +29,7 @@ public class ClientVendorController {
 
     @GetMapping("/client-vendor-list")
     public String listClientVendors(Model model) {
-        List<ClientVendorDto> clientVendorList = clientVendorService.listAllClientVendors();
+        List<ClientVendorDTO> clientVendorList = clientVendorService.listAllClientVendors();
         logger.info("Client Vendor list: " + clientVendorList);
         model.addAttribute("clientVendorList", clientVendorList);
         return "/clientvendor/client-vendor-list";
@@ -37,13 +37,13 @@ public class ClientVendorController {
 
     @GetMapping("/client-vendor-add")
     public String addClientVendor(Model model) {
-        model.addAttribute("clientVendor", new ClientVendorDto());
+        model.addAttribute("clientVendor", new ClientVendorDTO());
         model.addAttribute("stateList", List.of(State.values()));
         return "/clientvendor/client-vendor-add";
     }
 
     @PostMapping("/client-vendor-add")
-    public String addClientVendor(@ModelAttribute("clientVendor") ClientVendorDto clientVendorDto) {
+    public String addClientVendor(@ModelAttribute("clientVendor") ClientVendorDTO clientVendorDto) {
         logger.info("Client Vendor to be added: " + clientVendorDto);
         clientVendorService.save(clientVendorDto);
         return "redirect:/clientvendor/client-vendor-list";
@@ -59,7 +59,7 @@ public class ClientVendorController {
     }
 
     @PostMapping("/client-vendor-edit")
-    public String editClientVendor(ClientVendorDto clientVendorDto) {
+    public String editClientVendor(ClientVendorDTO clientVendorDto) {
         logger.info("Client Vendor edited = " + clientVendorDto);
         clientVendorService.update(clientVendorDto);
         return "redirect:/clientvendor/client-vendor-list";
