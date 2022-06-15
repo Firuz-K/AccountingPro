@@ -1,6 +1,6 @@
 package com.applicationpro.service.impl;
 
-import com.applicationpro.dto.ClientVendorDto;
+import com.applicationpro.dto.ClientVendorDTO;
 import com.applicationpro.entity.ClientVendor;
 import com.applicationpro.enums.CompanyType;
 import com.applicationpro.repository.ClientVendorRepository;
@@ -23,39 +23,39 @@ public class ClientVendorServiceImpl implements ClientVendorService {
     }
 
     @Override
-    public List<ClientVendorDto> listAllClientVendors() {
+    public List<ClientVendorDTO> listAllClientVendors() {
         return clientVendorRepository.findAll().stream()
-                .map(clientVendor -> mapperUtil.convert(clientVendor, new ClientVendorDto()))
+                .map(clientVendor -> mapperUtil.convert(clientVendor, new ClientVendorDTO()))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ClientVendorDto> listAllActiveClients() {
+    public List<ClientVendorDTO> listAllActiveClients() {
         return clientVendorRepository.findAllByCompanyTypeAndEnabledIsTrue(CompanyType.CLIENT).stream()
-                .map(clientVendor -> mapperUtil.convert(clientVendor, new ClientVendorDto()))
+                .map(clientVendor -> mapperUtil.convert(clientVendor, new ClientVendorDTO()))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ClientVendorDto> listAllActiveVendors() {
+    public List<ClientVendorDTO> listAllActiveVendors() {
         return clientVendorRepository.findAllByCompanyTypeAndEnabledIsTrue(CompanyType.VENDOR).stream()
-                .map(clientVendor -> mapperUtil.convert(clientVendor, new ClientVendorDto()))
+                .map(clientVendor -> mapperUtil.convert(clientVendor, new ClientVendorDTO()))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public ClientVendorDto findClientVendorById(Long id) {
-        return mapperUtil.convert(clientVendorRepository.getById(id), new ClientVendorDto());
+    public ClientVendorDTO findClientVendorById(Long id) {
+        return mapperUtil.convert(clientVendorRepository.getById(id), new ClientVendorDTO());
     }
 
     @Override
-    public void save(ClientVendorDto clientVendorDto) {
+    public void save(ClientVendorDTO clientVendorDto) {
         clientVendorDto.setEnabled(true);
         clientVendorRepository.save(mapperUtil.convert(clientVendorDto, new ClientVendor()));
     }
 
     @Override
-    public void update(ClientVendorDto clientVendorDto) {
+    public void update(ClientVendorDTO clientVendorDto) {
         clientVendorRepository.save(mapperUtil.convert(clientVendorDto, new ClientVendor()));
     }
 

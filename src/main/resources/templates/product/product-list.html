@@ -67,6 +67,7 @@
                                                     </thead>
                                                     <tbody>
 
+
                                                     <tr th:each="product, products: ${productDTOList}">
                                                         <td th:text = "${product.id}" ></td>
                                                         <td th:text = "${product.getName()}" ></td>
@@ -75,7 +76,8 @@
                                                         <td th:text = "${product.getUnit().value}" ></td>
                                                         <td th:text = "${product.category.getId()}" ></td>
                                                         <td th:text = "${product.getProductStatus().value}" ></td>
-                                                        <td>
+
+                                                    <tr>
                                                             <a>
                                                                 <i class="ft-edit" type="submit"></i>
                                                             </a>
