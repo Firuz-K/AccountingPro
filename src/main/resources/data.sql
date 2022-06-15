@@ -25,19 +25,6 @@ values(true, 'Admin'),
       (true, 'Employee'),
       (true, 'Root');
 
-
-insert into categories(created_by, created_time, is_deleted, updated_by, updated_time, description, enabled,company_id)
-values (1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Furniture', true,1) ,
-(1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Phone', true,1),
-(2, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Clothing', true,1),
-(3, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Electronics', true,1),
-(2, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Appliances', true,1);
-
-
-insert into products( created_by, created_time, is_deleted, updated_by, updated_time, description, enabled, low_limit_alert, name, new_column, product_status, qty, tax, unit, category_id)
-values ( 1,'2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Apple Phone ', true,
-        1, 'Iphone X', '1', 'ACTIVE', 11, 32,'PC',4);
-
 insert into client_vendor(created_by, created_time, enabled, is_deleted, updated_by, updated_time, address, company_name, email, phone, company_type, zip_code, company_id, state)
 VALUES (1,'2021-01-05 00:00:00', true,false,1,'2021-01-05 00:00:00','12 Hope st','Z Vendor','aaa@zvendor.com','111-222-3333','VENDOR','11223',1,'NY'),
        (1,'2021-01-05 00:00:00', true,false,1,'2021-01-05 00:00:00','12 Kunt st','X Client','aaa@xclient.com','111-222-3333','CLIENT','11223',1,'NY');
@@ -57,6 +44,9 @@ VALUES (1,'2021-01-05 00:00:00',true,false,1,'2021-01-05 00:00:00','mobile phone
 
 insert into stock_details( price, invoice_date, quantity, remaining_quantity, product_id)
 values (25,'2021-01-05 00:00:00', 5 ,3 ,1);
+
+
+
 
 
 
