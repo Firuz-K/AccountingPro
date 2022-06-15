@@ -18,25 +18,11 @@ public class ProductDTO {
     private Boolean enabled;
     private String name;
     private String description;
-
-    private Integer qty;
-
     private CategoryDTO category;
-
+    private Integer quantity;
     private Unit unit;
     private Integer lowLimitAlert;
     private Double tax;
     private CompanyDTO company;
     private ProductStatus productStatus;
-
-    public ProductDTO(String name, String description, Integer qty, Unit unit, Integer lowLimitAlert, Category category, ProductStatus productStatus) {
-        this.name = name;
-        this.description = description;
-        this.qty = qty;
-        this.unit = unit;
-        this.lowLimitAlert = lowLimitAlert;
-        this.category = category;
-        this.productStatus = productStatus;
-    }
-
 }
