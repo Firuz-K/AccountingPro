@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -23,7 +25,9 @@ public class ProductController {
     // ask about this list and creation
     @GetMapping("/product-list")
     public String getListOfProduct(Model model){
-        model.addAttribute("product", new ProductDTO());
+
+        List<ProductDTO> productDTOList = productService.listAllProducts();
+        model.addAttribute("productDTOList",productDTOList);
 
         return "/product/product-list";
 
