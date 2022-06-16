@@ -21,6 +21,6 @@ public interface InvoiceProductRepository extends JpaRepository<InvoiceProduct, 
     List<SoldProductDto> getSoldInvoiceProductList();
 
     @Query(value = "select i.invoice_type from invoice i join invoice_product ip on " +
-            "i.id = ip.id where ip.product_id = ?1",nativeQuery = true)
-    InvoiceType getInvoiceTypeProduct( @Param("product_id") Long id);
+            "i.id = ip.invoice_id where ip.product_id = ?1",nativeQuery = true)
+    String getInvoiceTypeProduct( @Param("product_id") Long id);
 }

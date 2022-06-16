@@ -88,7 +88,9 @@ public class  InvoiceProductServiceImpl implements InvoiceProductService {
     }
 
     @Override
-    public InvoiceType getInvoiceType(Long id) {
-        return invoiceProductRepository.getInvoiceTypeProduct(id);
+    public String getInvoiceType(Long id) {
+
+        String result = invoiceProductRepository.getInvoiceTypeProduct(id);
+        return result;
     }
 }

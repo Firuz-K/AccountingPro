@@ -52,7 +52,10 @@ values (25,'2021-01-05 00:00:00', 5 ,3 ,1),
        (45,'2021-01-25 00:00:00', 5 ,3 ,3);
 
 
-
+insert into invoice_product(created_by, created_time, enabled, is_deleted, updated_by, updated_time, name, price, profit, quantity, tax, invoice_id, product_id)
+values (1,'2021-01-05 00:00:00',true, false,1, '2021-01-05 00:00:00','Test', 24.00, 2.00, 12, 2.00,1,1),
+       (1,'2021-01-05 00:00:00',true, false,1, '2021-01-05 00:00:00','Test', 24.00, 2.00, 12, 2.00,2,2),
+       (1,'2021-01-05 00:00:00',true, false,1, '2021-01-05 00:00:00','Test', 24.00, 2.00, 12, 2.00,3,3);
 
 
 

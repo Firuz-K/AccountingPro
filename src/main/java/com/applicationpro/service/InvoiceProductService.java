@@ -27,6 +27,6 @@ public interface InvoiceProductService {
 
     void delete(Long invoiceProductId);
 
-    InvoiceType getInvoiceType(Long id);
+    String getInvoiceType(Long id);
 
 }

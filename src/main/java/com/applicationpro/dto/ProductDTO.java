@@ -31,7 +31,7 @@ public class ProductDTO {
     private ProductStatus productStatus;
 
     private Double BasePrice;
-    private InvoiceType invoiceType;
+    private String invoiceType;
     private LocalDate invoiceDate;
 
 }
