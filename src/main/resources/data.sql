@@ -38,15 +38,24 @@ values (1, '2021-01-05 00:00:00', false, 1, '2021-01-05 00:00:00', 'Furniture', 
 
 insert into products(created_by, created_time, enabled, is_deleted, updated_by, updated_time, description, low_limit_alert, name, product_status, quantity, tax, unit, category_id, company_id)
 VALUES (1,'2021-01-05 00:00:00',true,false,1,'2021-01-05 00:00:00','mobile phone',10,'iPhone14','ACTIVE',10,10,'PC',2,1),
-       (1,'2021-01-05 00:00:00',true,false,1,'2021-01-05 00:00:00','mobile phone',10,'iPhone13','OUT_OF_STOCK',0,10,'PC',2,1),
+       (1,'2021-01-05 00:00:00',true,false,1,'2021-01-05 00:00:00','mobile phone',10,'iPhone13','OUT_OF_STOCK',8,10,'PC',2,1),
        (1,'2021-01-05 00:00:00',true,false,1,'2021-01-05 00:00:00','mobile phone',10,'iPhone12','ACTIVE',20,10,'PC',2,1);
 
+insert into invoice(created_by,created_time,enabled,is_deleted, updated_by, updated_time, invoice_date, invoice_number, invoice_status, invoice_type, clientvendor_id ,company_id)
+values (1,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','12134','DRAFT','PURCHASE',1,1),
+       (2,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','12134','DRAFT','SALE',1,1),
+       (3,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','12134','DRAFT','PURCHASE',1,1);
 
 insert into stock_details( price, invoice_date, quantity, remaining_quantity, product_id)
-values (25,'2021-01-05 00:00:00', 5 ,3 ,1);
+values (25,'2021-01-05 00:00:00', 5 ,3 ,1),
+       (35,'2021-01-15 00:00:00', 5 ,3 ,2),
+       (45,'2021-01-25 00:00:00', 5 ,3 ,3);
 
 
-
+insert into invoice_product(created_by, created_time, enabled, is_deleted, updated_by, updated_time, name, price, profit, quantity, tax, invoice_id, product_id)
+values (1,'2021-01-05 00:00:00',true, false,1, '2021-01-05 00:00:00','Test', 24.00, 2.00, 12, 2.00,1,1),
+       (1,'2021-01-05 00:00:00',true, false,1, '2021-01-05 00:00:00','Test', 24.00, 2.00, 12, 2.00,2,2),
+       (1,'2021-01-05 00:00:00',true, false,1, '2021-01-05 00:00:00','Test', 24.00, 2.00, 12, 2.00,3,3);
 
 
 
