@@ -1,5 +1,6 @@
 package com.applicationpro.dto;
 
+import com.applicationpro.enums.UserStatus;
 import lombok.*;
 
 @NoArgsConstructor
@@ -17,5 +18,6 @@ public class UserDTO {
     private String phone;
     private CompanyDTO company;
     private RoleDTO role;
+    private UserStatus userStatus;
 
 }

@@ -31,7 +31,6 @@ public class Product extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Unit unit;
 
-
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
 
