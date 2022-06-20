@@ -73,7 +73,7 @@ public class CompanyController {
     public String closeCompany(@PathVariable("id") Long id){
 
         logger.info("Company to be deleted: " + companyService.findCompanyById(id));
-        companyService.disable(id);
+       // companyService.disable(id);
 
         return "redirect:/company/company-list";
     }
@@ -82,7 +82,7 @@ public class CompanyController {
     public String reOpenCompany(@PathVariable("id") Long id){
 
         logger.info("Company to be deleted: " + companyService.findCompanyById(id));
-        companyService.enable(id);
+      //  companyService.enable(id);
 
         return "redirect:/company/company-list";
     }
