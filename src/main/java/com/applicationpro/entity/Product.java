@@ -22,26 +22,25 @@ import javax.persistence.Table;
 @Where(clause = "is_deleted=false")
 public class Product extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    Company company;
-
     private String name;
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
+    private Integer lowLimitAlert;
+    private Double tax;
     private Integer quantity;
 
     @Enumerated(EnumType.STRING)
     private Unit unit;
 
-    private Integer lowLimitAlert;
-    private Double tax;
 
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    Company company;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 }

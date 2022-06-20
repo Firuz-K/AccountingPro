@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class ProductDTO {
+
     private Long id;
     private Boolean enabled;
     private String name;
