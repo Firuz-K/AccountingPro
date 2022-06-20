@@ -30,10 +30,8 @@
                 <section class="users-list-wrapper">
                     <!-- Filter starts -->
                     <div class="users-list-filter px-2">
-
-
                         <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-right">
-                            <a class="btn btn-success bg-light-success mb-1" ><i
+                            <a class="btn btn-success bg-light-success mb-1" th:href="@{/user/user-add}"><i
                                     class="fa fa-plus mr-1"></i>Add User</a>
                         </div>
                     </div>
@@ -64,29 +62,28 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr >
-                                                        <td ></td>
-                                                        <td class="text-truncate" ></td>
-                                                        <td ></td>
-                                                        <td ></td>
                                                     <tr th:each="user : ${users}">
-                                                        <td th:text="${user.id}" ></td>
-                                                        <td class="text-truncate" th:text="${user.firstName}" ></td>
+                                                        <td th:text="${user.id}"></td>
+                                                        <td th:text="${user.firstName}" ></td>
                                                         <td th:text="${user.lastName}" ></td>
                                                         <td th:text="${user.email}"></td>
                                                         <td th:text="${user.phone}"></td>
                                                         <td th:text="${user.role.description}"></td>
-                                                        <td th:text="${user.company.getTitle()}"></td>                               add when company DTO available and check user DTO-->
-                                                        <td th:text="${user.userStatus.value}"></td>
+                                                        <td th:text="${user.company.getTitle()}"></td>
                                                         <td>
                                                             <span
 
-                                                                    class="badge bg-light-DANGER"
-                                                                    >
-                                                                 <a >
-                                                                <i class="ft-edit"></i>
+                                                                    th:if ="${user.enabled == true}"
+                                                                    th:text="Active"
+                                                                    class="badge bg-light-success"></span>
+                                                            <span
+                                                                    th:if="${user.enabled == false}" th:text="Disabled"
+                                                                    class="badge bg-light-DANGER"></span>
+                                                        </td>
+                                                        <td>
+                                                            <a th:href="@{/user/edit/{id}(id=${user.id})}">
+                                                                <i  class="ft-edit" type="submit" >  </i>
                                                             </a>
-                                                            </span>
                                                         </td>
                                                     </tr>
                                                     </tbody>

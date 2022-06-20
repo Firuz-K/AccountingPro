@@ -20,13 +20,13 @@ VALUES (1,1, '2021-01-05 00:00:00', false, '2021-01-05 00:00:00', '3073 Sumner S
         true, '2020-01-05', '435-215-6440', 'John BP', 'UT', 'BP', '84104');
 
 insert into users( created_by, created_time, is_deleted, updated_by, updated_time, email, enabled, first_name,
-                   last_name, password, phone, company_id, role_id,user_status)
+                   last_name, password, phone, company_id, role_id)
 values ( 1, '2021-01-05 00:00:00', false, 1, '2021-01-15 00:00:00', 'admin@admin.com', true, 'Mike', 'Smith', null,
-         '7894561231', 1, 1,'ACTIVE'),
+         '7894561231', 1, 1),
        ( 2, '2021-01-06 00:00:00', false, 2, '2021-01-15 00:00:00', 'manager@admin.com', true, 'Mikey', 'Smith', null,
-         '7894561230', 2, 2,'ACTIVE'),
+         '7894561230', 2, 2),
        (2, '2021-01-07 00:00:00', false, 3, '2021-01-15 00:00:00', 'employee@admin.com', true, 'Micheal', 'Smith',
-        null, '7894561235', 3, 3,'ACTIVE');
+        null, '7894561235', 3, 3);
 
 
 insert into client_vendor(created_by, created_time, enabled, is_deleted, updated_by, updated_time, address, company_name, email, phone, company_type, zip_code, company_id, state)
