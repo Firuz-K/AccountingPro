@@ -18,18 +18,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class ProductDTO {
+
     private Long id;
     private Boolean enabled;
     private String name;
     private String description;
-    private CategoryDTO category;
-    private Integer quantity;
-    private Unit unit;
     private Integer lowLimitAlert;
     private Double tax;
-    private CompanyDTO company;
+    private Integer quantity;
+
+    private Unit unit;
     private ProductStatus productStatus;
 
+    private CompanyDTO company;
+    private CategoryDTO category;
+
+    // We do not have these fields in product entity ??? Omer
     private Double BasePrice;
     private String invoiceType;
     private LocalDate invoiceDate;

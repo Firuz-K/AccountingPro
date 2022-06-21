@@ -1,6 +1,7 @@
 package com.applicationpro.service.impl;
 
 import com.applicationpro.dto.RoleDTO;
+import com.applicationpro.entity.Role;
 import com.applicationpro.repository.RoleRepository;
 import com.applicationpro.service.RoleService;
 import com.applicationpro.util.MapperUtil;
@@ -31,6 +32,18 @@ public class RoleServiceImpl implements RoleService {
         return mapperUtil.convert(roleRepository.findById(id).get(), new RoleDTO());
 
         }
+
+    @Override
+    public RoleDTO findByRoleDescription(String source) {
+        Role role= roleRepository.findByDescription(source);
+
+       RoleDTO roleDTO =  mapperUtil.convert(role, new RoleDTO());
+       roleDTO.setId(role.getId());
+       roleDTO.setDescription(role.getDescription());
+       return roleDTO;
     }
+
+
+}
 
 

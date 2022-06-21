@@ -21,4 +21,5 @@ public interface CompanyService {
     void delete(CompanyDTO companyDTO);
 
 
+    CompanyDTO findByCompanyTitle(String title);
 }
