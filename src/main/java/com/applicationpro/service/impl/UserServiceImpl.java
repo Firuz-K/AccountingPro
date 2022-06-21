@@ -26,4 +26,35 @@ public class UserServiceImpl implements UserService {
         return list.stream().map(
                 user -> mapperUtil.convert(user,new UserDTO())).collect(Collectors.toList());
     }
+
+    @Override
+    public List<UserDTO> findAll() {
+        List<User> list = userRepository.findAll();
+        return list.stream().map(
+                user -> mapperUtil.convert(user,new UserDTO())).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDTO findUserById(Long id) {
+        User user = userRepository.findById(id).get();
+
+        return mapperUtil.convert(user, new UserDTO());
+
+    }
+
+    @Override
+    public void save(UserDTO userDTO) {
+        userDTO.setEnabled(true);
+        userRepository.save(mapperUtil.convert(userDTO, new User()));
+    }
+
+    @Override
+    public void update(UserDTO userDTO) {
+
+    }
+
+    @Override
+    public void delete(UserDTO userDTO) {
+
+    }
 }

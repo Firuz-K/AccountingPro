@@ -12,4 +12,6 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     //@Query(value = "SELECT * FROM companies", nativeQuery = true);
     //List<Company> retrieveAllCompanies();
 
+    Company findCompanyByTitle(String title);
+
 }
