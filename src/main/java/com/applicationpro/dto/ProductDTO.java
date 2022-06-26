@@ -24,7 +24,6 @@ public class ProductDTO {
     private String name;
     private String description;
     private Integer lowLimitAlert;
-    private Double tax;
     private Integer quantity;
 
     private Unit unit;

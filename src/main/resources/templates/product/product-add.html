@@ -30,7 +30,7 @@
                     <div class="users-list-filter px-2">
                         <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-right">
                             <a class="btn btn-primary bg-light-primary mb-1"
-                            th:href="@{/product/product-list}"><i
+                            th:href="@{/product/list}"><i
                                     class="fa fa-list mr-1"></i>Product List</a>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                                  aria-labelledby="account-tab">
 
                                                 <!-- Account form starts -->
-                                                <form novalidate th:action="@{/product/product-add}"
+                                                <form novalidate th:action="@{/product/create}"
                                                        method="post" th:object="${product}">
                                                     <div class="row">
                                                         <div class="col-12 col-md-6">

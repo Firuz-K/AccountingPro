@@ -49,6 +49,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void save(CompanyDTO companyDTO) {
         companyDTO.setEnabled(true);
+
         companyRepository.save(mapperUtil.convert(companyDTO, new Company()));
     }
 

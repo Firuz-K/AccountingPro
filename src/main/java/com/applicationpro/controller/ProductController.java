@@ -24,7 +24,7 @@ public class ProductController {
     }
 
     // ask about this list and creation
-    @GetMapping("/product-list")
+    @GetMapping("/list")
     public String getListOfProduct(Model model){
 
         List<ProductDTO> productDTOList = productService.listAllProducts();
@@ -36,7 +36,7 @@ public class ProductController {
 
     // creating new product
     // is create and save on edit page are same?
-    @GetMapping("/product-add")
+    @GetMapping("/create")
     public String createProduct(Model model){
         model.addAttribute("product", new ProductDTO());
         model.addAttribute("categories", categoryService.listAllCategories());
@@ -48,7 +48,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/product-add")
+    @PostMapping("/create")
     public String addProduct(@ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()) {
             model.addAttribute("product", new ProductDTO());
