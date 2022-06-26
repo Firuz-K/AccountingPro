@@ -32,8 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(ProductDTO dto) {
-
-        dto.setProductStatus(ProductStatus.ACTIVE);
+        dto.setEnabled(true);
         Product product = mapperUtil.convert(dto,new Product());
         productRepository.save(product);
 

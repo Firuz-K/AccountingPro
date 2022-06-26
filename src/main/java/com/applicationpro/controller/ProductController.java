@@ -47,19 +47,21 @@ public class ProductController {
 
     }
 
-//
-//    @PostMapping("/create")
-//    public String addProduct(@ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model){
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("product", new ProductDTO());
-//            model.addAttribute("categories", categoryService.listAllCategories());
-//            model.addAttribute("units", Unit.values());
-//            return "/product/product-add";
-//
-//        }
-//        productService.create(product);
-//        return "redirect:/product/product-list";
-//    }
+
+    @PostMapping("/product-add")
+    public String addProduct(@ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("product", new ProductDTO());
+            model.addAttribute("categories", categoryService.listAllCategories());
+            model.addAttribute("units", Unit.values());
+            model.addAttribute("status",ProductStatus.values());
+
+            return "/product/product-add";
+
+        }
+        productService.create(product);
+        return "redirect:/product/product-list";
+    }
 //
 //    @GetMapping("/create")
 //    public String cancel() {
