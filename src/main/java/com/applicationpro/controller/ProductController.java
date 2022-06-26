@@ -1,6 +1,7 @@
 package com.applicationpro.controller;
 
 import com.applicationpro.dto.ProductDTO;
+import com.applicationpro.enums.ProductStatus;
 import com.applicationpro.enums.Unit;
 import com.applicationpro.service.CategoryService;
 import com.applicationpro.service.ProductService;
@@ -40,6 +41,7 @@ public class ProductController {
         model.addAttribute("product", new ProductDTO());
         model.addAttribute("categories", categoryService.listAllCategories());
         model.addAttribute("units", Unit.values());
+        model.addAttribute("status",ProductStatus.values());
 
         return "/product/product-add";
 
