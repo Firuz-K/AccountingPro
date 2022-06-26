@@ -95,15 +95,14 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="users-edit-status">Status</label>
-                                                                    <select id="users-edit-status"
-                                                                            class="form-control" th:field="*{productStatus}"
-                                                                            required  aria-invalid="false"
-                                                                            >
+                                                                    <select  th:field="*{productStatus}" id="users-edit-status"
+                                                                            class="form-control"
+                                                                            required  aria-invalid="false" >
                                                                         <option th:value="''" >Select Status</option>
                                                                         <option
                                                                                 th:each="productStatus : ${status}"
-                                                                                th:value="${productStatus.name()}"
-                                                                                th:text="${productStatus.name()}"
+                                                                                th:value="${productStatus}"
+                                                                                th:text="${productStatus.value}"
                                                                         ></option>
 
                                                                     </select>
@@ -116,13 +115,13 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="users-edit-status">Category</label>
-                                                                    <select
+                                                                    <select th:field="*{category}"
                                                                             id="users-edit-status1"
                                                                             class="form-control"
                                                                             required>
                                                                         <option th:value="''">Select Category</option>
                                                                         <option th:each="category : ${categories}"
-                                                                                th:value="${category.description}"
+                                                                                th:value="${category.getId()}"
                                                                                 th:text="${category.description}">></option>
 
                                                                     </select>
@@ -142,13 +141,13 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="users-edit-role">Unit</label>
-                                                                    <select  id="users-edit-role"
+                                                                    <select th:field="*{unit}"  id="users-edit-role"
                                                                             class="form-control"
                                                                             required>
                                                                         <option th:value="''">Select Unit</option>
                                                                         <option th:each="unit : ${units}"
-                                                                                th:value="${unit.name()}"
-                                                                                th:text="${unit.name()}">
+                                                                                th:value="${unit}"
+                                                                                th:text="${unit.value}">
                                                                         </option>
 
                                                                     </select>
