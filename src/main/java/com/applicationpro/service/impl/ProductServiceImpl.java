@@ -1,6 +1,7 @@
 package com.applicationpro.service.impl;
 
 import com.applicationpro.dto.ProductDTO;
+import com.applicationpro.entity.Category;
 import com.applicationpro.entity.Product;
 import com.applicationpro.enums.ProductStatus;
 import com.applicationpro.repository.ProductRepository;
@@ -32,8 +33,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(ProductDTO dto) {
-
-        dto.setProductStatus(ProductStatus.ACTIVE);
+        dto.setEnabled(true);
+        dto.setCategory(dto.getCategory());
         Product product = mapperUtil.convert(dto,new Product());
         productRepository.save(product);
 
