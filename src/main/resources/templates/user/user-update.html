@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="loading" lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- BEGIN : Head-->
@@ -147,12 +148,14 @@
                                                                     <label for="users-edit-status">Status</label>
                                                                     <select th:field="*{userStatus}" id="users-edit-status" class="form-control"
                                                                             required>
-                                                                        <option th:value="''" th:text="Select"></option>
-                                                                        <option th:each="status : ${userStatus}"
-                                                                                th:value="${status.value}"
+
+                                                                        <option th:selected="${user.userStatus.getValue()}"
+                                                                                th:each="status : ${userStatus}"
+                                                                                th:value="${status}"
                                                                                 th:text="${status.value}">
 
                                                                         </option>
+
 
                                                                     </select>
                                                                 </div>
@@ -173,29 +176,29 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                            <!-- Account form ends -->
+                                                <!-- Account form ends -->
+                                            </div>
+                                            <!-- Account content ends -->
+
+
                                         </div>
-                                        <!-- Account content ends -->
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Table ends -->
+                </section>
+
             </div>
-            <!-- Table ends -->
-            </section>
-
         </div>
+        <!-- END : End Main Content-->
+
+
+        <!-- Scroll to top button -->
+        <button class="btn btn-primary scroll-top" type="button"><i class="ft-arrow-up"></i></button>
+
     </div>
-    <!-- END : End Main Content-->
-
-
-    <!-- Scroll to top button -->
-    <button class="btn btn-primary scroll-top" type="button"><i class="ft-arrow-up"></i></button>
-
-</div>
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 

@@ -73,11 +73,11 @@
                                                         <td>
                                                             <span
 
-                                                                    th:if ="${user.userStatus.value=='Active'}"
+                                                                    th:if ="${user.userStatus.getValue()=='Active'}"
                                                                     th:text="Active"
                                                                     class="badge bg-light-success"></span>
                                                             <span
-                                                                    th:if="${user.userStatus.value=='Inactive'}" th:text="Inactive"
+                                                                    th:if="${user.userStatus.getValue()=='Inactive'}" th:text="Inactive"
                                                                     class="badge bg-light-DANGER"></span>
                                                         </td>
                                                         <td>
