@@ -2,11 +2,13 @@ package com.applicationpro.service.impl;
 
 import com.applicationpro.dto.UserDTO;
 import com.applicationpro.entity.User;
+import com.applicationpro.enums.UserStatus;
 import com.applicationpro.repository.UserRepository;
 import com.applicationpro.service.UserService;
 import com.applicationpro.util.MapperUtil;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,26 +37,47 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO findUserById(Long id) {
-        User user = userRepository.findById(id).get();
+    public UserDTO findByUserName(String username) {
+       User user = userRepository.findByEmail(username);
+        return mapperUtil.convert(user, new UserDTO());
+    }
 
+    @Override
+    public UserDTO findByID(Long id) {
+        Optional<User> user = userRepository.findById(id);
         return mapperUtil.convert(user, new UserDTO());
 
     }
 
+
     @Override
     public void save(UserDTO userDTO) {
         userDTO.setEnabled(true);
+        userDTO.setUserStatus(UserStatus.ACTIVE);
         userRepository.save(mapperUtil.convert(userDTO, new User()));
     }
 
     @Override
     public void update(UserDTO userDTO) {
+        //Find current user
+        User user = userRepository.findByEmail(userDTO.getEmail());
+        //Map updated user dto to entity object
+        User convertedUser = mapperUtil.convert(userDTO, new User());
+        //set id to converted object
+        convertedUser.setId(user.getId());
+        //save updated user
+        userRepository.save(convertedUser);
 
     }
 
     @Override
-    public void delete(UserDTO userDTO) {
+    public void delete(String username) {
+        User user = userRepository.findByEmail(username);
+
+            user.setIsDeleted(true);
+            userRepository.save(user);
 
     }
+
+
 }

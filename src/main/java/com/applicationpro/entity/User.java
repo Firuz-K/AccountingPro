@@ -29,8 +29,8 @@ public class User extends BaseEntity {
     private boolean enabled;
     private String phone;
 
-//    @Enumerated(EnumType.STRING)
-//    private UserStatus userStatus;
+    @Enumerated(EnumType.STRING)
+    private UserStatus userStatus;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
