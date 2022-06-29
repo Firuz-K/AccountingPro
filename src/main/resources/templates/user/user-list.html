@@ -73,15 +73,15 @@
                                                         <td>
                                                             <span
 
-                                                                    th:if ="${user.enabled == true}"
+                                                                    th:if ="${user.userStatus.getValue()=='Active'}"
                                                                     th:text="Active"
                                                                     class="badge bg-light-success"></span>
                                                             <span
-                                                                    th:if="${user.enabled == false}" th:text="Disabled"
+                                                                    th:if="${user.userStatus.getValue()=='Inactive'}" th:text="Inactive"
                                                                     class="badge bg-light-DANGER"></span>
                                                         </td>
                                                         <td>
-                                                            <a th:href="@{/user/edit/{id}(id=${user.id})}">
+                                                            <a th:href="@{/user/user-update/{id}(id=${user.id})}">
                                                                 <i  class="ft-edit" type="submit" >  </i>
                                                             </a>
                                                         </td>

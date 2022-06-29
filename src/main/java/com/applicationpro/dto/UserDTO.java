@@ -18,6 +18,6 @@ public class UserDTO {
     private String phone;
     private CompanyDTO company;
     private RoleDTO role;
-   // private UserStatus userStatus;
+    private UserStatus userStatus;
 
 }
