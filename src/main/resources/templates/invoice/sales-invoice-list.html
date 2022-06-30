@@ -7,8 +7,8 @@
 
 <body class="horizontal-layout horizontal-menu horizontal-menu-padding 2-columns  navbar-sticky"
       data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
-    <div th:replace="fragments :: page_header"></div>
-    <div class="wrapper">
+<div th:replace="fragments :: page_header"></div>
+<div class="wrapper">
     <div th:replace="fragments :: page_menu"></div>
     <div class="main-panel">
         <div class="main-content">
@@ -16,15 +16,31 @@
             <div class="content-wrapper">
                 <section class="users-list-wrapper">
                     <!-- ADD SALES INVOICE LINK BEGIN -->
-                    <div class="users-list-filter px-2">
-                        <form>
-                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-right">
-                                <a class="btn btn-success bg-light-success mb-1"
-                                   ><i
-                                        class="fa fa-plus mr-1"></i>Create Sales Invoice</a>
+                    <form th:action="@{/invoice/sales-invoice-create}" th:object="${clientVendor}" method="get">
+                        <div class="form-row justify-content-end">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label for="clientvendor">SELECT CLIENT</label>
+                                    <select class="custom-select" required="required" id="clientvendor" name="id"
+                                            th:field="*{id}" aria-invalid="false">
+                                        <option th:value="''" th:text="Select"></option>
+                                        <option th:each="clientVendor : ${clientVendorList}"
+                                                th:value="${clientVendor.id}"
+                                                th:text="${clientVendor.companyName}"></option>
+                                    </select>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label for="create">CREATE</label>
+                                    <button type="submit" name="action" value="createInvoice" id="create"
+                                            class="btn btn-success bg-light-success mb-1">Create Invoice
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                     <!-- ADD SALES INVOICE LINK END -->
                     <!-- LIST BEGIN -->
                     <div class="users-list-table">
@@ -34,49 +50,55 @@
                                     <div class="card-content fw-container">
                                         <div class="card-body fw-body">
                                             <div class="table-responsive content demo-html">
-                                                <table id="example" class="table table-striped table-bordered file-export" style="width:100%">
+                                                <table id="example"
+                                                       class="table table-striped table-bordered file-export"
+                                                       style="width:100%">
                                                     <thead>
                                                     <tr>
                                                         <th>Invoice No</th>
                                                         <th>Invoice Date</th>
-                                                        <th>Vendor</th>
+                                                        <th>Client</th>
                                                         <th>Cost</th>
                                                         <th>Tax</th>
                                                         <th>Total</th>
-                                                        <th>Add Line Item</th>
-                                                        <th></th>
+                                                        <th>Edit</th>
+                                                        <th>Status</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr >
-                                                            <td class="text-truncate" ></td>
-                                                            <td class="text-truncate" ></td>
-                                                            <td class="text-truncate" ></td>
-                                                            <td class="text-truncate" ></td>
-                                                            <td class="text-truncate" ></td>
-                                                            <td class="text-truncate" ></td>
-                                                            <td>
-                                                                <a class="ft-list" >
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <form action="#" data-th-action="@{/invoice/approveDeleteToInvoice/{id}(id=${salesInvoice.getInvoiceNo()})}"
-                                                                      method="post">
-                                                                    <button
-                                                                            class="btn btn-success mb-2 mb-sm-0 mr-sm-2"
-                                                                            type="submit" name="action" value="approve">Approve
-                                                                    </button>
-                                                                    <button
-                                                                            class="btn btn-danger mb-2 mb-sm-0 mr-sm-2"
-                                                                            type="submit" name="action" value="delete">Delete
-                                                                    </button>
-                                                                    <button
-                                                                            class="btn btn-info mb-2 mb-sm-0 mr-sm-2"
-                                                                            type="submit" name="action" value="toInvoice">To Invoice
-                                                                    </button>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
+                                                    <tr th:each="invoice:${invoiceList}">
+                                                        <td th:text="${invoice.invoiceDto.invoiceNumber}"
+                                                            class="text-truncate"></td>
+                                                        <td th:text="${invoice.invoiceDto.invoiceDate}"
+                                                            class="text-truncate"></td>
+                                                        <td th:text="${invoice.invoiceDto.clientVendor.companyName}"
+                                                            class="text-truncate"></td>
+                                                        <td th:text="${#numbers.formatDecimal(invoice.totalAmount,0,'POINT',2,'COMMA')}"
+                                                            class="text-truncate"></td>
+                                                        <td th:text="${#numbers.formatDecimal(invoice.totalTax,0,'POINT',2,'COMMA')}"
+                                                            class="text-truncate"></td>
+                                                        <td th:text="${#numbers.formatDecimal(invoice.totalTax+invoice.totalAmount,0,'POINT',2,'COMMA')}"
+                                                            class="text-truncate"></td>
+                                                        <td>
+                                                            <a class="ft-list">
+                                                            </a>
+                                                        </td>
+
+                                                        <button
+                                                                class="btn btn-success mb-2 mb-sm-0 mr-sm-2"
+                                                                type="submit" name="action" value="approve">Approve
+                                                        </button>
+                                                        <button
+                                                                class="btn btn-danger mb-2 mb-sm-0 mr-sm-2"
+                                                                type="submit" name="action" value="delete">Delete
+                                                        </button>
+                                                        <button
+                                                                class="btn btn-info mb-2 mb-sm-0 mr-sm-2"
+                                                                type="submit" name="action" value="toInvoice">To Invoice
+                                                        </button>
+                                                        </form>
+                                                        </td>
+                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
