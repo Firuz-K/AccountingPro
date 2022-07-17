@@ -42,7 +42,7 @@ public class SaleInvoiceController {
     }
 
     @GetMapping("/sales-invoice-create")
-    public String createPurchaseInvoice(@ModelAttribute("clientVendorId") ClientVendorDTO clientVendor, Model model) {
+    public String createSaleInvoice(@ModelAttribute("clientVendorId") ClientVendorDTO clientVendor, Model model) {
         logger.info("Purchase info request for the vendor company Id: " + clientVendor.getId());
 
         InvoiceDTO draftInvoice = invoiceService.createDraftInvoice(InvoiceType.SALE,
@@ -56,7 +56,7 @@ public class SaleInvoiceController {
     }
 
     @PostMapping("/sale-invoice-create")
-    public String createPurchaseInvoice(@ModelAttribute("invoice") InvoiceDTO invoice) {
+    public String createSaleInvoice(@ModelAttribute("invoice") InvoiceDTO invoice) {
         System.out.println(invoice.getId());
         System.out.println(invoice.getInvoiceType());
         invoice = invoiceService.findInvoiceById(invoice.getId());
@@ -66,7 +66,7 @@ public class SaleInvoiceController {
     }
 
     @GetMapping("/sales-invoice-select-product/{invoiceId}")
-    public String purchaseInvoiceSelectProduct(@PathVariable("invoiceId") Long invoiceId,
+    public String saleInvoiceSelectProduct(@PathVariable("invoiceId") Long invoiceId,
                                                Model model) {
         model.addAttribute("productList", productService.listAllActiveProducts());
         model.addAttribute("invoice", invoiceService.findInvoiceById(invoiceId));
@@ -75,7 +75,7 @@ public class SaleInvoiceController {
         return "/invoice/sales-invoice-select-product";
     }
     @PostMapping("/sales-invoice-select-product/{invoiceId}")
-    public String purchaseInvoiceSelectProduct(@ModelAttribute("invoiceProduct") InvoiceProductDTO invoiceProductDto,
+    public String saleInvoiceSelectProduct(@ModelAttribute("invoiceProduct") InvoiceProductDTO invoiceProductDto,
                                                @PathVariable("invoiceId") Long invoiceId,
                                                Model model) {
         logger.info("invoice product to be added invoiceId:"+invoiceId +" invoiceProductDto " + invoiceProductDto);
@@ -89,6 +89,5 @@ public class SaleInvoiceController {
         model.addAttribute("invoiceProduct", new InvoiceProductDTO());
         model.addAttribute("invoiceProductList", invoiceProductService.listInvoiceProductsByInvoiceId(invoiceId));
         return "redirect:/invoice/sales-invoice-select-product/"+ invoiceId;
-//        return "redirect:/invoice/sales-invoice-create";
     }
 }

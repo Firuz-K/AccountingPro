@@ -183,7 +183,8 @@
                                                 </div>
                                                 <!-- INVOICE PRODUCT LIST END-->
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-3 mt-sm-2">
-                                                    <form action="#" data-th-action="@{/invoice/cancelOrSave/{id}(id=${invoice.getInvoiceNumber()})}"
+
+                                                    <form action="#" data-th-action="@{/invoice/sales-invoice-select-product/{id}(id=${invoice.getInvoiceNumber()})}"
                                                           method="post">
                                                         <button class="btn btn-danger mb-2 mb-sm-0 mr-sm-2"
                                                                 type="submit" name="action" value="cancel">Cancel
