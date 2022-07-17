@@ -8,10 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,9 +47,45 @@ public class CompanyController {
 
         companyService.save(companyDTO);
 
-        return "redirect:/company/company-add";
+        return "redirect:/company/company-list";
     }
 
+    @GetMapping("/company-edit/{id}")
+    public String editCompany(@PathVariable("id") Long id, Model model){
+
+        logger.info("Company to be edited: " + companyService.findCompanyById(id));
+
+        model.addAttribute("company", companyService.findCompanyById(id));
+        model.addAttribute("stateList", List.of(State.values()));
+
+        return "/company/company-edit";
+    }
+
+    @PostMapping("/company-edit")
+    public String editCompany(CompanyDTO companyDTO){
+        logger.info("Company edited: " + companyDTO);
+        companyService.update(companyDTO);
+
+        return "redirect:/company/company-list";
+    }
+
+    @GetMapping("/close/{id}")
+    public String closeCompany(@PathVariable("id") Long id){
+
+        logger.info("Company to be deleted: " + companyService.findCompanyById(id));
+       // companyService.disable(id);
+
+        return "redirect:/company/company-list";
+    }
+
+    @GetMapping("/re-open/{id}")
+    public String reOpenCompany(@PathVariable("id") Long id){
+
+        logger.info("Company to be deleted: " + companyService.findCompanyById(id));
+      //  companyService.enable(id);
+
+        return "redirect:/company/company-list";
+    }
 
 
 }

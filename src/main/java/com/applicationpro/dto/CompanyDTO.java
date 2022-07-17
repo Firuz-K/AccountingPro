@@ -4,6 +4,7 @@ import com.applicationpro.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -19,6 +20,7 @@ public class CompanyDTO {
     private String zip;
     private String representative;
     private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate establishmentDate;
     private String phone;
     private State state;

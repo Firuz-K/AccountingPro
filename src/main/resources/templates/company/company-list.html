@@ -70,19 +70,21 @@
                                                            <td th:text="${company.email}"></td>
                                                            <td th:text="${company.phone}"></td>
                                                            <td th:text="${company.zip}"></td>
-                                                             <td th:text="${company.state}"></td> <!-- -->
+                                                             <td th:text="${company.state}"></td>
                                                         <td>
                                                             <span
 
+                                                                    th:if ="${company.enabled == true}"
+                                                                    th:text="Active"
                                                                     class="badge bg-light-success"></span>
                                                             <span
-
+                                                                    th:if="${company.enabled == false}" th:text="Disabled"
                                                                     class="badge bg-light-DANGER"></span>
                                                         </td>
                                                         <!--<td></td>-->
                                                         <td>
-                                                            <a >
-                                                                <i class="ft-edit"></i>
+                                                            <a th:href="@{/company/company-edit/{id}(id=${company.id})}">
+                                                                <i  class="ft-edit" type="submit" >  </i>
                                                             </a>
                                                         </td>
                                                     </tr>

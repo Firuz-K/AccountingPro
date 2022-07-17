@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,10 +13,10 @@ import java.time.LocalDate;
 public class StockDTO {
 
     private Long id;
-    private LocalDate date;
+    private LocalDateTime date;
     private Integer quantity;
     private Integer remainingQuantity;
-    private Double price;
+    private int price;
     private ProductDTO product;
 
 }

@@ -3,6 +3,7 @@ package com.applicationpro.service.impl;
 import com.applicationpro.dto.InvoiceProductDTO;
 import com.applicationpro.dto.common.SoldProductDto;
 import com.applicationpro.entity.InvoiceProduct;
+import com.applicationpro.enums.InvoiceType;
 import com.applicationpro.repository.InvoiceProductRepository;
 import com.applicationpro.repository.InvoiceRepository;
 import com.applicationpro.service.InvoiceProductService;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class InvoiceProductServiceImpl implements InvoiceProductService {
+public class  InvoiceProductServiceImpl implements InvoiceProductService {
 
     private final InvoiceProductRepository invoiceProductRepository;
     private final MapperUtil mapperUtil;
@@ -84,5 +85,12 @@ public class InvoiceProductServiceImpl implements InvoiceProductService {
 //        invoiceProduct.setIsDeleted(true);
 //        invoiceProductRepository.save(invoiceProduct);
         invoiceProductRepository.deleteById(invoiceProductId);
+    }
+
+    @Override
+    public String getInvoiceType(Long id) {
+
+        String result = invoiceProductRepository.getInvoiceTypeProduct(id);
+        return result;
     }
 }

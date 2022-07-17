@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- File export table -->
-                <form th:object="${stock}">
+                <form th:object="${productStock}">
 
 
                 <section id="file-export">
@@ -62,28 +62,29 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr >
-                                                    <td th:field="*{date}" ></td>
-                                                    <td th:field="*{product.getName()}" ></td>
-                                                    <td  th:field="*{quantity}"></td>
-                                                    <td  >
-
-                                                        <span  class="badge bg-light-blue">PURCHASE</span>
-                                                        <span  class="badge bg-light-success">SALE</span>
+                                                <tr th:each="product, products : ${productStock}" >
+                                                    <td th:text="${product.getInvoiceDate()}" ></td>
+                                                    <td th:text="${product.getName()}" ></td>
+                                                    <td th:text="${product.getQuantity()+ ' / Pieces'}"></td>
+                                                    <td>
+                                                        <span th:if="${product.invoiceType=='PURCHASE'}" class="badge bg-light-blue">PURCHASE</span>
+                                                        <span th:if="${product.invoiceType=='SALE'}" class="badge bg-light-success">SALE</span>
                                                     </td>
-                                                    <td th:field="*{price}"  ></td>
+                                                    <td th:text="${product.getBasePrice()}"></td>
+
+
 
                                                 </tr>
 
                                                 </tbody>
                                                 <tfoot>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Product Name</th>
-                                                    <th>Quantity</th>
-                                                    <th>Sale & Purchase </th>
-                                                    <th>Base Price</th>
-                                                </tr>
+<!--                                                <tr>-->
+<!--                                                    <th>Date</th>-->
+<!--                                                    <th>Product Name</th>-->
+<!--                                                    <th>Quantity</th>-->
+<!--                                                    <th>Sale & Purchase </th>-->
+<!--                                                    <th>Base Price</th>-->
+<!--                                                </tr>-->
                                                 </tfoot>
                                             </table>
                                         </div>

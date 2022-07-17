@@ -42,12 +42,14 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyDTO findCompanyById(Long id) {
-        return null;
+        Company company = companyRepository.findById(id).get();
+        return mapperUtil.convert(company,new CompanyDTO());
     }
 
     @Override
     public void save(CompanyDTO companyDTO) {
         companyDTO.setEnabled(true);
+
         companyRepository.save(mapperUtil.convert(companyDTO, new Company()));
     }
 
@@ -58,6 +60,14 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void delete(CompanyDTO companyDTO) {
+
+    }
+
+    @Override
+    public CompanyDTO findByCompanyTitle(String title) {
+
+        Company company = companyRepository.findCompanyByTitle(title);
+        return mapperUtil.convert(company,new CompanyDTO());
 
     }
 }
