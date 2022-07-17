@@ -47,7 +47,7 @@ VALUES (1,'2021-01-05 00:00:00',true,false,1,'2021-01-05 00:00:00','mobile phone
 
 insert into invoice(created_by,created_time,enabled,is_deleted, updated_by, updated_time, invoice_date, invoice_number, invoice_status, invoice_type, clientvendor_id ,company_id)
 values (1,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','12134','DRAFT','PURCHASE',1,1),
-       (2,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','12134','DRAFT','SALE',1,1),
+       (2,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','121345','DRAFT','SALE',2,1),
        (3,'2021-01-05 00:00:00',true, false, 1,'2021-11-25 00:00:00','2022-01-05 00:00:00','12134','DRAFT','PURCHASE',1,1);
 
 insert into stock_details( price, invoice_date, quantity, remaining_quantity, product_id)
