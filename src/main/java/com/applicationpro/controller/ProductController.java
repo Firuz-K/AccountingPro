@@ -25,10 +25,10 @@ public class ProductController {
 
     // ask about this list and creation
     @GetMapping("/list")
-    public String getListOfProduct(Model model){
+    public String getListOfProduct(Model model) {
 
         List<ProductDTO> productDTOList = productService.listAllProducts();
-        model.addAttribute("productDTOList",productDTOList);
+        model.addAttribute("productDTOList", productDTOList);
 
         return "/product/product-list";
 
@@ -37,11 +37,11 @@ public class ProductController {
     // creating new product
     // is create and save on edit page are same?
     @GetMapping("/create")
-    public String createProduct(Model model){
+    public String createProduct(Model model) {
         model.addAttribute("product", new ProductDTO());
         model.addAttribute("categories", categoryService.listAllCategories());
         model.addAttribute("units", Unit.values());
-        model.addAttribute("status",ProductStatus.values());
+        model.addAttribute("status", ProductStatus.values());
 
         return "/product/product-add";
 
@@ -49,12 +49,12 @@ public class ProductController {
 
 
     @PostMapping("/create")
-    public String addProduct(@ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model){
+    public String addProduct(@ModelAttribute("product") ProductDTO product, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("product", new ProductDTO());
             model.addAttribute("categories", categoryService.listAllCategories());
             model.addAttribute("units", Unit.values());
-            model.addAttribute("status",ProductStatus.values());
+            model.addAttribute("status", ProductStatus.values());
 
             return "/product/product-add";
 
@@ -62,42 +62,4 @@ public class ProductController {
         productService.create(product);
         return "redirect:/product/product-list";
     }
-//
-//    @GetMapping("/create")
-//    public String cancel() {
-//        productService.cancel();
-//        return "redirect:/product/product-list";
-//    }
-//
-//    @GetMapping("/update/{productId}")
-//    public String editTask(@PathVariable("productId") Long productId, Model model) {
-//        model.addAttribute("product", productService.findById(productId));
-//        model.addAttribute("categories", categoryService.listAllCategories());
-//        model.addAttribute("units", Unit.values());
-//        return "/product/product-edit";
-//    }
-//
-//    @PostMapping("/update/{id}")
-//    public String saveTask(@ModelAttribute("product") ProductDTO product,BindingResult bindingResult, Model model) {
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("categories", categoryService.listAllCategories());
-//            model.addAttribute("units", Unit.values());
-//            return "/product/product-list";
-//
-//        }
-//        productService.save(product);
-//        return "/product/product-edit";
-//    }
-////    @GetMapping("/update/{productId}")
-////    public String cancel(@PathVariable("productId") Long productId) {
-////        productService.cancel(productId);
-////        return "redirect:/product/product-list";
-////    }
-//
-//    @GetMapping("/update/{productId}")
-//    public String delete(@PathVariable("productId") Long productId) {
-//
-//        productService.delete(productId);
-//        return "/product/product-list";
-//    }
 }
