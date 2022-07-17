@@ -40,7 +40,7 @@
                                                  aria-labelledby="account-tab">
                                                 <!-- INVOICE PART BEGIN-->
                                                 <form class="needs-validation"
-                                                      th:action="@{/invoice/sales-invoice-list}"
+                                                      th:action="@{/invoice/sale-invoice-list}"
                                                       th:object="${invoice}"
                                                       method="post"
                                                       novalidate>
@@ -85,9 +85,12 @@
                                                     </div>
                                                     <!-- INVOICE PART END -->
                                                     <!-- INVOICE PRODUCT PART BEGIN -->
+<!--                                                    th:action="@{/invoice/sales-invoice-select-product/{invoiceId}(invoiceId=${invoice.id})}"-->
+<!---->
                                                 </form>
                                                 <form class="needs-validation"
-                                                          th:action="@{/invoice/sales-invoice-select-product/{invoiceId}(invoiceId=${invoice.id})}"
+
+                                                      th:action="@{/invoice/sales-invoice-select-product/{invoiceId}(invoiceId=${invoice.id})}"
                                                           th:object="${invoiceProduct}"
                                                           method="post"
                                                           novalidate>

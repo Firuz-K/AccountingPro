@@ -57,10 +57,12 @@ public class SaleInvoiceController {
 
     @PostMapping("/sale-invoice-create")
     public String createPurchaseInvoice(@ModelAttribute("invoice") InvoiceDTO invoice) {
+        System.out.println(invoice.getId());
+        System.out.println(invoice.getInvoiceType());
         invoice = invoiceService.findInvoiceById(invoice.getId());
         logger.info("Invoice to be created: " + invoice);
         invoiceService.save(invoice);
-        return "redirect:/invoice/sales-invoice-list";
+        return "redirect:/invoice/sale-invoice-list";
     }
 
     @GetMapping("/sales-invoice-select-product/{invoiceId}")
@@ -87,5 +89,6 @@ public class SaleInvoiceController {
         model.addAttribute("invoiceProduct", new InvoiceProductDTO());
         model.addAttribute("invoiceProductList", invoiceProductService.listInvoiceProductsByInvoiceId(invoiceId));
         return "redirect:/invoice/sales-invoice-select-product/"+ invoiceId;
+//        return "redirect:/invoice/sales-invoice-create";
     }
 }
