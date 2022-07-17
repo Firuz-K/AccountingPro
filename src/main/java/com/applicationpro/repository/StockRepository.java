@@ -1,5 +1,6 @@
 package com.applicationpro.repository;
 
+import com.applicationpro.entity.Company;
 import com.applicationpro.entity.Product;
 import com.applicationpro.entity.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,5 +25,7 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
     @Query(value = "select sd.invoice_date from stock_details sd join products p on " +
             "sd.id = p.id where sd.product_id = ?1",nativeQuery = true)
     LocalDate getIdate(@Param("product_id") Long id);
+
+
 
 }
