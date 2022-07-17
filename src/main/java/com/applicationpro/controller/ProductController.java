@@ -24,7 +24,7 @@ public class ProductController {
     }
 
     // ask about this list and creation
-    @GetMapping("/list")
+    @GetMapping("/product-list")
     public String getListOfProduct(Model model) {
 
         List<ProductDTO> productDTOList = productService.listAllProducts();
