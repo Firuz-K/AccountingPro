@@ -186,12 +186,12 @@
                                                                         <td th:text="${invoiceProduct.invoice.invoiceStatus}"></td>
                                                                         <td>
                                                                             <form method="post"
-                                                                                  data-th-action="@{/invoice/sales-invoice-update-products/{id}(id=${invoiceProduct.getId()})}">
+                                                                                  th:action="@{/invoice/sales-invoice-update-products/{id}(id=${invoiceProduct.getId()})}">
                                                                                 <input type="hidden" id="invoiceId"
                                                                                        name="invoiceId"
                                                                                        th:value="${invoice.id}">
 
-                                                                                <button class="ft-minus btn-primary bg-light-primary" type="submit">SAVE</button>
+                                                                                <button class="ft-minus btn-primary bg-light-primary" type="submit"></button>
                                                                             </form>
                                                                         </td>
                                                                     </tr>

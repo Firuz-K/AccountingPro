@@ -57,8 +57,6 @@ public class SaleInvoiceController {
 
     @PostMapping("/sale-invoice-create")
     public String createSaleInvoice(@ModelAttribute("invoice") InvoiceDTO invoice) {
-        System.out.println(invoice.getId());
-        System.out.println(invoice.getInvoiceType());
         invoice = invoiceService.findInvoiceById(invoice.getId());
         logger.info("Invoice to be created: " + invoice);
         invoiceService.save(invoice);
