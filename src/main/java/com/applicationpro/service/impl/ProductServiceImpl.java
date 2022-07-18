@@ -1,10 +1,11 @@
 package com.applicationpro.service.impl;
 
+import com.applicationpro.dto.CompanyDTO;
 import com.applicationpro.dto.ProductDTO;
-import com.applicationpro.entity.Category;
+import com.applicationpro.entity.Company;
 import com.applicationpro.entity.Product;
-import com.applicationpro.enums.ProductStatus;
 import com.applicationpro.repository.ProductRepository;
+import com.applicationpro.service.CompanyService;
 import com.applicationpro.service.ProductService;
 import com.applicationpro.service.StockService;
 import com.applicationpro.util.MapperUtil;
@@ -24,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
     private final InvoiceProductServiceImpl invoiceProductService;
 
 
-    public ProductServiceImpl(MapperUtil mapperUtil, ProductRepository productRepository, StockService stockService,  @Lazy InvoiceProductServiceImpl invoiceProductService) {
+    public ProductServiceImpl(MapperUtil mapperUtil, ProductRepository productRepository, StockService stockService, @Lazy InvoiceProductServiceImpl invoiceProductService, CompanyService companyService) {
         this.mapperUtil = mapperUtil;
         this.productRepository = productRepository;
         this.stockService = stockService;
@@ -34,12 +35,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void create(ProductDTO dto) {
         dto.setEnabled(true);
-        dto.setCategory(dto.getCategory());
+        //dto.setCategory(dto.getCategory());
+        CompanyDTO company  = dto.getCategory().getCompany();
+        dto.setCompany(company);
         Product product = mapperUtil.convert(dto,new Product());
         productRepository.save(product);
-
+//        Long product_id = product.getId();
+//        Double tax = productRepository.getTaxFromInvoiceProduct(product_id);
+//        product.setTax(tax);
+//        update(product);
     }
-
 
 
     @Override
